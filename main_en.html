@@ -109,11 +109,13 @@
 						</div>
 					</div>
 					<hr>
-					<a class="recent has-icon" onclick="Tab0()">Recent</a>
-					<a class="libraries has-icon" onclick="Tab1()">Libraries</a>
-					<a class="queue has-icon" onclick="Tab2()">In Queue</a>
-					<a class="playlists has-icon" onclick="Tab3()">Playlists</a>
-					<a class="sessions has-icon" onclick="Tab4()">QQC Sessions</a>
+					<div class="items">
+						<a class="recent has-icon" onclick="Tab0()">Recent</a>
+						<a class="libraries has-icon" onclick="Tab1()">Libraries</a>
+						<a class="queue has-icon" onclick="Tab2()">In Queue</a>
+						<a class="playlists has-icon" onclick="Tab3()">Playlists</a>
+						<a class="sessions has-icon" onclick="Tab4()">QQC Sessions</a>
+					</div>
 					<div class="separator"></div>
 					<a class="settings has-icon" onclick="Tab5()">Settings</a>
 				</header>
@@ -346,7 +348,7 @@
 								</header>
 
 
-								<div class="grid-view">
+								<div class="grid-view video">
 									<!--Item-->
 									<header publisher="none" album="none" videoname="Sample Video 1" class="header item">
 										<span class="name">
@@ -374,6 +376,57 @@
 
 								</div>
 
+								<header class="header heading">
+									<span class="name"><h2>Photos</h2></span>
+								</header>
+
+
+								<div class="grid-view photos">
+									<!--Item-->
+									<header photoname="Test Pic" class="header item">
+										<span class="name">
+											<span class="title">Test Pic</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Play">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+									<!--Item-->
+									<header photoname="EvePride" class="header item">
+										<span class="name">
+											<span class="title">EvePride</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Play">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+									<!--Item-->
+									<header photoname="Banner_Blue" class="header item">
+										<span class="name">
+											<span class="title">Banner_Blue</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Play">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+									<!--Item-->
+									<header photoname="Sample" class="header item">
+										<span class="name">
+											<span class="title">Sample</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Play">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+								</div>
 
 							</article>
 
@@ -647,7 +700,7 @@
 
 											<div class="items">
 												<div class="item">
-													<span contenteditable="">C:/Users/user/MyMusic</span> <a class="cpe-button is-text is-unaccented" title="Remove"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													<span contenteditable="">A:/Users/user/MyMusic</span> <a class="cpe-button is-text is-unaccented" title="Remove"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
 												</div>
 											</div>
 											<button class="cpe-button">
@@ -668,7 +721,7 @@
 
 											<div class="items">
 												<div class="item">
-													<span contenteditable="">C:/Users/user/MyVideo</span> <a class="cpe-button is-text is-unaccented" title="Remove"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													<span contenteditable="">A:/Users/user/MyVideo</span> <a class="cpe-button is-text is-unaccented" title="Remove"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
 												</div>
 											</div>
 											<button class="cpe-button">
@@ -679,12 +732,34 @@
 											
 											</fieldset>
 										</div>
-											<button class="cpe-button is-alert-color" title="Resets music and video folders to factory options">
+
+										<div class="fieldset Video">
+											<fieldset>
+											<h2>
+											<span translate="no" class="cpe-icon material-icons">image</span>
+											Photos
+											</h2>
+
+											<div class="items">
+												<div class="item">
+													<span contenteditable="">A:/Users/user/MyPhotos</span> <a class="cpe-button is-text is-unaccented" title="Remove"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+												</div>
+											</div>
+											<button class="cpe-button">
+												<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
+												<span>Add Folder</span>
+											</button>
+
+											
+											</fieldset>
+										</div>
+
+											<button class="cpe-button is-alert-color" title="Resets music, video and photo folders to factory options">
 												<span translate="no" class="cpe-icon cpe-icon-small material-icons">undo</span>
 												<span>Reset Folders</span>
 											</button>
 									</fieldset>
-									<div style="margin:5px 0;"><small>This setting sets the library locations Media Player will use for music and video</small></div>
+									<div style="margin:5px 0;"><small>This setting sets the library locations Media Player will use for music, video and photos</small></div>
 								</div>
 
 
