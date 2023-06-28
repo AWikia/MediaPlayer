@@ -109,11 +109,13 @@
 						</div>
 					</div>
 					<hr>
-					<a class="recent has-icon" onclick="Tab0()">Πρόσφατα</a>
-					<a class="libraries has-icon" onclick="Tab1()">Βιβλιοθήκες</a>
-					<a class="queue has-icon" onclick="Tab2()">Στην Ουρά</a>
-					<a class="playlists has-icon" onclick="Tab3()">Λίστες Αναπαραγωγής</a>
-					<a class="sessions has-icon" onclick="Tab4()">Συνεδρίες QQC</a>
+					<div class="items">
+						<a class="recent has-icon" onclick="Tab0()">Πρόσφατα</a>
+						<a class="libraries has-icon" onclick="Tab1()">Βιβλιοθήκες</a>
+						<a class="queue has-icon" onclick="Tab2()">Στην Ουρά</a>
+						<a class="playlists has-icon" onclick="Tab3()">Λίστες Αναπαραγωγής</a>
+						<a class="sessions has-icon" onclick="Tab4()">Συνεδρίες QQC</a>
+					</div>
 					<div class="separator"></div>
 					<a class="settings has-icon" onclick="Tab5()">Ρυθμίσεις</a>
 				</header>
@@ -346,7 +348,7 @@
 								</header>
 
 
-								<div class="grid-view">
+								<div class="grid-view video">
 									<!--Item-->
 									<header publisher="none" album="none" videoname="Sample Video 1" class="header item">
 										<span class="name">
@@ -374,6 +376,57 @@
 
 								</div>
 
+								<header class="header heading">
+									<span class="name"><h2>Φωτογραφίες</h2></span>
+								</header>
+
+
+								<div class="grid-view photos">
+									<!--Item-->
+									<header photoname="Test Pic" class="header item">
+										<span class="name">
+											<span class="title">Test Pic</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Αναπαραγωγή">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+									<!--Item-->
+									<header photoname="EvePride" class="header item">
+										<span class="name">
+											<span class="title">EvePride</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Αναπαραγωγή">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+									<!--Item-->
+									<header photoname="Banner_Blue" class="header item">
+										<span class="name">
+											<span class="title">Banner_Blue</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Αναπαραγωγή">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+									<!--Item-->
+									<header photoname="Sample" class="header item">
+										<span class="name">
+											<span class="title">Sample</span>
+										</span>
+										<div class="controls cpe-floating-button-group">
+												<button class="cpe-floating-button play" title="Αναπαραγωγή">
+													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												</button>
+										</div>
+									</header>
+								</div>
 
 							</article>
 
@@ -649,7 +702,7 @@
 
 											<div class="items">
 												<div class="item">
-													<span contenteditable="">C:/Users/user/MyMusic</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													<span contenteditable="">A:/Users/user/MyMusic</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
 												</div>
 											</div>
 											<button class="cpe-button">
@@ -670,7 +723,7 @@
 
 											<div class="items">
 												<div class="item">
-													<span contenteditable="">C:/Users/user/MyVideo</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													<span contenteditable="">A:/Users/user/MyVideo</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
 												</div>
 											</div>
 											<button class="cpe-button">
@@ -681,12 +734,34 @@
 											
 											</fieldset>
 										</div>
-											<button class="cpe-button is-alert-color" title="Επαναφέρνει τους φακέλους μουσικής και βίντεο στις εργοστασιακές επιλογές">
+
+										<div class="fieldset Video">
+											<fieldset>
+											<h2>
+											<span translate="no" class="cpe-icon material-icons">image</span>
+											Φωτογραφίες
+											</h2>
+
+											<div class="items">
+												<div class="item">
+													<span contenteditable="">A:/Users/user/MyPhotos</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+												</div>
+											</div>
+											<button class="cpe-button">
+												<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
+												<span>Προσθήκη Φακέλου</span>
+											</button>
+
+											
+											</fieldset>
+										</div>
+
+											<button class="cpe-button is-alert-color" title="Επαναφέρνει τους φακέλους μουσικής, βίντεο και φωτογραφιών στις εργοστασιακές επιλογές">
 												<span translate="no" class="cpe-icon cpe-icon-small material-icons">undo</span>
 												<span>Επαναφορά Φακέλων</span>
 											</button>
 									</fieldset>
-									<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει τις θέσεις βιβλιοθηκών που θα χρησιμοποιεί ο Αναπαραγωγέας Πολυμέσων για την μουσική και τα βίντεο</small></div>
+									<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει τις θέσεις βιβλιοθηκών που θα χρησιμοποιεί ο Αναπαραγωγέας Πολυμέσων για την μουσική, τα βίντεο και τις φωτογραφίες</small></div>
 								</div>
 
 
