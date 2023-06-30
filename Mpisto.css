@@ -642,28 +642,6 @@ user-select:none;
 -moz-user-select:none;
 }
 
-/*TMP */
-.translated-rtl {
-    direction:rtl;
-}
-
-.translated-ltr {
-    direction:ltr;
-}
-
-html:fullscreen .fullscreen-off,
-html:not(:fullscreen) .fullscreen-on {
-	display:none;
-}
-
-html:-webkit-full-screen .fullscreen-off,
-html:not(:-webkit-full-screen) .fullscreen-on {
-	display:none;
-}
-
-
-/* END TMP  */
-
 body {
 --page-opacity:0.85;
 --media-player-controls-height:115px;
@@ -1367,86 +1345,11 @@ line-height:16px;
 
 
 /* Settings Page */
-.fieldset {
-  border-radius:10px;
-  padding:10px;
-  margin:15px 10px;
-  background-color:var(--canvas-secondary-background-color);
-  border:1px solid var(--inactive-text-background-color);
-  box-shadow: 0 0 5px 0.5px rgba(24, 24, 24, 0.3), 0 0 5px 0.5px rgba(247, 247, 247, 0.3);
-}
-
-.fieldset fieldset {
-color:inherit;
-border:0;
-padding:0;
-line-height:inherit;
-}
-
-.fieldset fieldset legend,
-.fieldset > fieldset > h2 {
-  font-size:23px;
-  font-weight:bolder;
-  display:block;
-  margin:0 0 4px;
-  padding:0;
-  display:flex;
-  align-items:center;
-  color:inherit;
-}
-
-.fieldset fieldset legend .cpe-icon,
-.fieldset > fieldset > h2 .cpe-icon {
-	margin-right:5px;
-	width:27px;
-	height:27px;
-	min-width:27px;
-	min-height:27px;
-	vertical-align:middle;
-}
-
-/* Level B Fieldset */
-.fieldset fieldset .fieldset {
-  border-color:var(--canvas-background-color);
-  background-color:rgba(var(--highlight-background-color-rgb),0.1);
-  color:var(--canvas-foreground-color);
-  box-shadow:none;
-  margin:10px;
-}
-
-/* Level C Fieldset */
-.fieldset fieldset .fieldset fieldset .fieldset {
-	background-color:var(--canvas-secondary-background-color);
-	color:var(--canvas-foreground-color);
-	background-image:none;
-	border-color:var(--inactive-text-background-color);
-}
-
 .settings_page input#AppTheme05:not(:checked),
 .settings_page input#AppTheme05:not(:checked) + label { 
     display:none; 
 }
 
-
-
-@media only screen and (max-width:1019px) {
-
-label {
-	font-size:18px;
-}
-
-.fieldset fieldset legend,
-.fieldset > fieldset > h2 {
-	font-size:20px;
-}
-
-.fieldset fieldset legend .cpe-icon,
-.fieldset > fieldset > h2 .cpe-icon {
-	margin-right:4px;
-	--icon-size:1;
-}
-
-}
 
 /* Misc */
 .settings_page .LibraryLocations .items {
@@ -1643,12 +1546,4 @@ label {
 .visualmode-contrast .proc_page footer,
 .visualmode-contrast .media-controls > .content  {
 	background-color:transparent;
-}
-
-.visualmode-contrast .fieldset fieldset .fieldset {
-	border-color:currentColor;
-}
-
-.visualmode-contrast .fieldset fieldset .fieldset fieldset .fieldset {
-	border-color:var(--inactive-text-background-color);
 }
