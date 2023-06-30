@@ -650,6 +650,18 @@ user-select:none;
 .translated-ltr {
     direction:ltr;
 }
+
+html:fullscreen .fullscreen-off,
+html:not(:fullscreen) .fullscreen-on {
+	display:none;
+}
+
+html:-webkit-full-screen .fullscreen-off,
+html:not(:-webkit-full-screen) .fullscreen-on {
+	display:none;
+}
+
+
 /* END TMP  */
 
 body {
@@ -1202,6 +1214,11 @@ line-height:16px;
 	font-weight:500;
 	margin:0;
 	padding:0;
+}
+
+.libraries .proc_page h2,
+.search-results .proc_page h2 {
+	flex:1;
 }
 
 

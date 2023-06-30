@@ -65,3 +65,75 @@ function Tab4() {
 function Tab5() {
 		$('body').attr("page", "settings");
 }
+
+
+/** Bottom Bar **/
+
+/* Timer */
+function ChangeTimerValue() {
+//Start
+	value = document.querySelector(".media-controls .timer .timer_range").value;
+	hours = String( Math.floor( value / 3600000 ) ).padStart(2, '0');
+	mins = String( Math.floor( (value / 60000) % 60 ) ).padStart(2, '0');
+	secs = String( Math.floor( (value / 1000) % 60 ) ).padStart(2, '0');
+	ms = String( (value % 1000) ).padStart(3, '0');
+	document.querySelector(".media-controls .timer .timer_start").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
+// End
+	value = document.querySelector(".media-controls .timer .timer_range").getAttribute("max");
+	hours = String( Math.floor( value / 3600000 ) ).padStart(2, '0');
+	mins = String( Math.floor( (value / 60000) % 60 ) ).padStart(2, '0');
+	secs = String( Math.floor( (value / 1000) % 60 ) ).padStart(2, '0');
+	ms = String( (value % 1000) ).padStart(3, '0');
+	document.querySelector(".media-controls .timer .timer_end").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
+
+
+}
+
+/* Media Controls */
+function TogglePlayPause(playtext="Play",pausetext="Pause") {
+	elem = document.querySelector(".media-controls .bottom .controls .play");
+	elemIcon = document.querySelector(".media-controls .bottom .controls .play .cpe-icon");
+	elem.setAttribute("state",(parseInt(elem.getAttribute("state")) + 1) % 2);
+	state = parseInt(elem.getAttribute("state"));
+	elem.setAttribute("title",[playtext,pausetext][state]);
+	elemIcon.innerHTML = ["play_arrow","pause"][state];
+}
+
+function ToggleRandomness(offtext="No Random Selection",ontext="Active Random Selection") {
+	elem = document.querySelector(".media-controls .bottom .controls .shuffle");
+	elemIcon = document.querySelector(".media-controls .bottom .controls .shuffle .cpe-icon");
+	elem.setAttribute("state",(parseInt(elem.getAttribute("state")) + 1) % 2);
+	state = parseInt(elem.getAttribute("state"));
+	elem.setAttribute("title",[offtext,ontext][state]);
+	elemIcon.innerHTML = ["shuffle","shuffle_on"][state];
+}
+
+function ToggleRepeatness(offtext="No Repeat",ontext="Repeat All", onetext="Repeat One") {
+	elem = document.querySelector(".media-controls .bottom .controls .repeat");
+	elemIcon = document.querySelector(".media-controls .bottom .controls .repeat .cpe-icon");
+	elem.setAttribute("state",(parseInt(elem.getAttribute("state")) + 1) % 3);
+	state = parseInt(elem.getAttribute("state"));
+	elem.setAttribute("title",[offtext,ontext,onetext][state]);
+	elemIcon.innerHTML = ["repeat","repeat_on","repeat_one_on"][state];
+}
+
+function ChangeVolume(voltext="Volume",mutetext="Muted") {
+	value = parseInt(document.querySelector(".media-controls .bottom .controls .cpe-dropdown__content .volume").value);
+	state = (value == 0) ? 0 : (value < 51) ? 1 : 2;
+	elem = document.querySelector(".media-controls .bottom .controls .volume-button");
+	elemIcon = document.querySelector(".media-controls .bottom .controls .volume-button .cpe-icon");
+	title = voltext + " (" + [mutetext,value+"%",value+"%"][state] +")";
+	elem.setAttribute("title",title);
+	elemIcon.innerHTML = ["no_sound","volume_down","volume_up"][state];
+	 
+}
+
+
+/* Fullscreen */
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else if (document.exitFullscreen) {
+    document.exitFullscreen();
+  }
+}

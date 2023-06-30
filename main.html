@@ -299,7 +299,13 @@
 							</header>
 							<article>
 								<header class="header heading">
-									<span class="name"><h2>Μουσική</h2></span>
+									<span class="name">
+										<h2>Μουσική</h2> 
+										<button class="cpe-button is-tertiary is-unaccented">
+											<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+											<span>Αναπαραγωγή Όλων</span>
+										</button>
+									</span>
 								</header>
 									<header publisher="none" album="none" songname="Sample Music 1" class="header item">
 										<span class="name">Sample Music 1</span>
@@ -344,7 +350,13 @@
 										<span class="duration">00:09:33</span>
 									</header>
 								<header class="header heading">
-									<span class="name"><h2>Βίντεο</h2></span>
+									<span class="name">
+										<h2>Βίντεο</h2>
+										<button class="cpe-button is-tertiary is-unaccented">
+											<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+											<span>Αναπαραγωγή Όλων</span>
+										</button>
+									</span>
 								</header>
 
 
@@ -377,7 +389,13 @@
 								</div>
 
 								<header class="header heading">
-									<span class="name"><h2>Φωτογραφίες</h2></span>
+									<span class="name">
+										<h2>Φωτογραφίες</h2>
+										<button class="cpe-button is-tertiary is-unaccented">
+											<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+											<span>Αναπαραγωγή Όλων</span>
+										</button>
+									</span>
 								</header>
 
 
@@ -778,9 +796,9 @@
 				<div class="content">
 					<div class="lunalevit"></div>
 					<div class="timer">
-						<span>00:00:00.000</span>
-						<input type="range" min="0" max="28000" value="0" step="200"></input>
-						<span>00:00:28.000</span>
+						<span class="timer_start">00:00:00.000</span>
+						<input type="range" class="timer_range" oninput="ChangeTimerValue()" min="0" max="28000" value="0" step="200"></input>
+						<span class="timer_end">00:00:28.000</span>
 					</div>
 					<div class="bottom">
 						<div class="playing">
@@ -790,7 +808,7 @@
 						</div>
 						<div class="separator"></div>
 						<div class="cpe-button-group controls">
-							<button class="cpe-button is-square is-tertiary is-unaccented shuffle" title="Χωρίς Τυχαία Επιλογή">
+							<button class="cpe-button is-square is-tertiary is-unaccented shuffle" state="0" onclick="ToggleRandomness('Χωρίς Τυχαία Επιλογή','Ενεργή Τυχαία Επιλογή')" title="Χωρίς Τυχαία Επιλογή">
 								<span translate="no" class="cpe-icon material-icons">
 									shuffle
 								</span>
@@ -800,7 +818,7 @@
 									skip_previous
 								</span>
 							</button>
-							<button class="cpe-button is-square play" title="Αναπαραγωγή">
+							<button class="cpe-button is-square play" state="0" onclick="TogglePlayPause('Αναπαραγωγή','Παύση')" title="Αναπαραγωγή">
 								<span translate="no" class="cpe-icon cpe-icon-large material-icons">
 									play_arrow
 								</span>
@@ -810,7 +828,7 @@
 									skip_next
 								</span>
 							</button>
-							<button class="cpe-button is-square is-tertiary is-unaccented repeat" title="Χωρίς Επανάληψη">
+							<button class="cpe-button is-square is-tertiary is-unaccented repeat" state="0" onclick="ToggleRepeatness('Χωρίς Επανάληψη','Επανάληψη Όλων', 'Επανάληψη Ενός')" title="Χωρίς Επανάληψη">
 								<span translate="no" class="cpe-icon material-icons">
 									repeat
 								</span>
@@ -819,7 +837,7 @@
 						<div class="separator"></div>
 						<div class="cpe-button-group controls">
 							<div class="cpe-dropdown is-flipped">
-								<div class="cpe-button is-square is-tertiary is-unaccented volume" title="Ένταση (100%)">
+								<div class="cpe-button is-square is-tertiary is-unaccented volume-button" title="Ένταση (100%)">
 									<span translate="no" class="cpe-icon material-icons">
 										volume_up
 									</span>
@@ -827,14 +845,15 @@
 								<div class="cpe-dropdown__content">
 									<ul class="cpe-list volume-control">
 										<li>
-											<input type="range"class="volume" min="0" max="100" value="100">
+											<input type="range"class="volume" oninput="ChangeVolume('Ένταση','Σε Σίγαση')" min="0" max="100" value="100">
 										</li>
 									</ul>
 								</div>
 							</div>
-							<button class="cpe-button is-square is-tertiary is-unaccented fullscreen" title="Πλήρης Οθόνη (F11)">
+							<button class="cpe-button is-square is-tertiary is-unaccented fullscreen" onclick="toggleFullScreen()" title="Πλήρης Οθόνη (F11)">
 								<span translate="no" class="cpe-icon material-icons">
-									open_in_full
+									<span class="fullscreen-off">open_in_full</span>
+									<span class="fullscreen-on">close_fullscreen</span>
 								</span>
 							</button>
 							<div class="cpe-dropdown has-reversed-nested-menus is-flipped">
