@@ -1,0 +1,180 @@
+﻿/* App specific CSS for Visual Styles */
+
+/* High Contrast Styling */
+.visualmode-contrast body {
+--page-opacity:1;
+}
+
+.visualmode-contrast .proc_page .upper span:hover, 
+.visualmode-contrast .proc_page .header.item:hover {
+	background-color:var(--highlight-background-color);
+	color:var(--highlight-text-background-color);
+}
+
+.visualmode-contrast .tabs a:hover,
+.visualmode-contrast .media-controls .bottom .playing:hover {
+	background-color:var(--highlight-text-background-color);
+	border-color:var(--highlight-background-color);
+	color:var(--highlight-background-color);
+}
+
+.visualmode-contrast [page*="recent"] .tabs .recent,
+.visualmode-contrast [page*="libraries"] .tabs .libraries,
+.visualmode-contrast [page*="queue"] .tabs .queue,
+.visualmode-contrast [page*="playlists"] .tabs .playlists,
+.visualmode-contrast [page*="sessions"] .tabs .sessions,
+.visualmode-contrast [page*="settings"] .tabs .settings,
+.visualmode-contrast .tabs .cpe-dropdown:focus > a,
+.visualmode-contrast .tabs .cpe-dropdown:focus-within > a,
+.visualmode-contrast .media-controls .bottom .playing:active {
+	background-color:var(--highlight-background-color);
+	border-color:var(--highlight-background-color);
+	color:var(--highlight-text-background-color);
+}
+
+
+.visualmode-contrast .proc_page .upper,
+.visualmode-contrast .settings_page .upper,
+.visualmode-contrast .proc_page footer,
+.visualmode-contrast .media-controls > .content  {
+	background-color:transparent;
+}
+
+
+/** General **/
+/* Standard */
+.visualstyle-general .tabs a:hover,
+.visualstyle-general .media-controls .bottom .playing:hover {
+	background-color:var(--hyperlink-background-color);
+	border-color:var(--hyperlink-background-color);
+	color:var(--hyperlink-foreground-color);
+}
+
+.visualstyle-general [page*="recent"] .tabs .recent,
+.visualstyle-general [page*="libraries"] .tabs .libraries,
+.visualstyle-general [page*="queue"] .tabs .queue,
+.visualstyle-general [page*="playlists"] .tabs .playlists,
+.visualstyle-general [page*="sessions"] .tabs .sessions,
+.visualstyle-general [page*="settings"] .tabs .settings,
+.visualstyle-general .tabs .cpe-dropdown:focus > a,
+.visualstyle-general .tabs .cpe-dropdown:focus-within > a,
+.visualstyle-general .media-controls .bottom .playing:active {
+	background-color:var(--hyperlink-background-color-hover);
+	border-color:var(--hyperlink-background-color-hover);
+	color:var(--hyperlink-foreground-color-inverted);
+}
+
+
+/* High Contrast */
+.visualstyle-general.visualmode-contrast .proc_page .upper span:hover, 
+.visualstyle-general.visualmode-contrast .proc_page .header.item:hover {
+	background-color:var(--hyperlink-background-color);
+	color:var(--hyperlink-foreground-color);
+}
+
+/** Basic **/
+/* Standard */
+.visualstyle-basic .tabs a,
+.visualstyle-basic .media-controls .bottom .playing {
+	border-color:var(--luna-foreground-color);
+	color:var(--luna-foreground-color);
+}
+
+.visualstyle-basic .tabs a:hover,
+.visualstyle-basic .media-controls .bottom .playing:hover {
+	color:var(--luna-foreground-color-hover);
+	border-color:var(--luna-foreground-color-hover);
+	background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.2);
+}
+
+.visualstyle-basic [page*="recent"] .tabs .recent,
+.visualstyle-basic [page*="libraries"] .tabs .libraries,
+.visualstyle-basic [page*="queue"] .tabs .queue,
+.visualstyle-basic [page*="playlists"] .tabs .playlists,
+.visualstyle-basic [page*="sessions"] .tabs .sessions,
+.visualstyle-basic [page*="settings"] .tabs .settings,
+.visualstyle-basic .tabs .cpe-dropdown:focus > a,
+.visualstyle-basic .tabs .cpe-dropdown:focus-within > a,
+.visualstyle-basic .media-controls .bottom .playing:active {
+	color:var(--luna-foreground-color-hover);
+	border-color:var(--luna-foreground-color-hover);
+	background-color:rgba(var(--luna-hyperlink-background-color-rgb),0.4);
+}
+
+.visualstyle-basic .proc_page .upper span:hover, 
+.visualstyle-basic .proc_page .header.item:hover {
+	background-color:var(--hyperlink-fadeout-color);
+}
+
+/* High Contrast */
+.visualstyle-basic.visualmode-contrast .proc_page .upper span:hover, 
+.visualstyle-basic.visualmode-contrast .proc_page .header.item:hover {
+	background-color:var(--highlight-background-color);
+	color:var(--highlight-text-background-color);
+}
+
+.visualstyle-basic.visualmode-contrast .tabs a:hover,
+.visualstyle-basic.visualmode-contrast .media-controls .bottom .playing:hover {
+	background-color:var(--canvas-secondary-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+	color:var(--canvas-text-secondary-background-color);
+}
+
+.visualstyle-basic.visualmode-contrast [page*="recent"] .tabs .recent,
+.visualstyle-basic.visualmode-contrast [page*="libraries"] .tabs .libraries,
+.visualstyle-basic.visualmode-contrast [page*="queue"] .tabs .queue,
+.visualstyle-basic.visualmode-contrast [page*="playlists"] .tabs .playlists,
+.visualstyle-basic.visualmode-contrast [page*="sessions"] .tabs .sessions,
+.visualstyle-basic.visualmode-contrast [page*="settings"] .tabs .settings,
+.visualstyle-basic.visualmode-contrast .tabs .cpe-dropdown:focus > a,
+.visualstyle-basic.visualmode-contrast .tabs .cpe-dropdown:focus-within > a,
+.visualstyle-basic.visualmode-contrast .media-controls .bottom .playing:active {
+	background-color:var(--highlight-background-color);
+	border-color:var(--canvas-text-secondary-background-color);
+	color:var(--highlight-text-background-color);
+}
+
+/** Simple **/
+/* Standard */
+.visualstyle-simple .tabs a:hover,
+.visualstyle-simple [page*="recent"] .tabs .recent,
+.visualstyle-simple [page*="libraries"] .tabs .libraries,
+.visualstyle-simple [page*="queue"] .tabs .queue,
+.visualstyle-simple [page*="playlists"] .tabs .playlists,
+.visualstyle-simple [page*="sessions"] .tabs .sessions,
+.visualstyle-simple [page*="settings"] .tabs .settings,
+.visualstyle-simple .tabs .cpe-dropdown:focus > a,
+.visualstyle-simple .tabs .cpe-dropdown:focus-within > a,
+.visualstyle-simple .media-controls .bottom .playing:hover,
+.visualstyle-simple .media-controls .bottom .playing:active {
+	background-color:rgba(var(--canvas-secondary-background-color-hover-rgb),var(--mica-opacity-2));
+	color:var(--canvas-secondary-foreground-color-inverted);
+	animation:none;
+	border-color:rgba(var(--canvas-foreground-color-rgb),0.2);
+}
+
+
+/* High Contrast */
+.visualstyle-simple.visualmode-contrast .proc_page .upper span:hover, 
+.visualstyle-simple.visualmode-contrast .proc_page .header.item:hover {
+	background-color:var(--canvas-foreground-color);
+	color:var(--canvas-background-color);
+}
+
+.visualstyle-simple.visualmode-contrast .tabs a:hover,
+.visualstyle-simple.visualmode-contrast [page*="recent"] .tabs .recent,
+.visualstyle-simple.visualmode-contrast [page*="libraries"] .tabs .libraries,
+.visualstyle-simple.visualmode-contrast [page*="queue"] .tabs .queue,
+.visualstyle-simple.visualmode-contrast [page*="playlists"] .tabs .playlists,
+.visualstyle-simple.visualmode-contrast [page*="sessions"] .tabs .sessions,
+.visualstyle-simple.visualmode-contrast [page*="settings"] .tabs .settings,
+.visualstyle-simple.visualmode-contrast .tabs .cpe-dropdown:focus > a,
+.visualstyle-simple.visualmode-contrast .tabs .cpe-dropdown:focus-within > a,
+.visualstyle-simple.visualmode-contrast .media-controls .bottom .playing:hover,
+.visualstyle-simple.visualmode-contrast .media-controls .bottom .playing:active {
+	background-color:var(--canvas-secondary-foreground-color);
+	color:var(--canvas-secondary-background-color);
+	box-shadow:none;
+	animation:none;
+	border-color:rgba(var(--canvas-secondary-background-color-rgb),0.5);
+}
