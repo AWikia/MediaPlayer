@@ -969,7 +969,7 @@ line-height:16px;
 .settings_page .upper {
 	background-color:rgba(var(--canvas-background-color-rgb),var(--page-opacity));
 	border-bottom:1px solid var(--inactive-text-background-color);
-	color:var(--canvas-text-secondary-background-color);
+	color:var(--canvas-text-background-color);
 	top:0;
 	position:relative;
 	padding-right:var(--scrollbar-width);
@@ -1078,6 +1078,7 @@ line-height:16px;
 
 .settings_page .upper {
 	background-color:rgba(var(--canvas-tabs-background-color),var(--canvas-active-tabs-opacity));
+	color:var(--canvas-text-secondary-background-color);
 }
 
 .proc_page .upper span {
@@ -1103,7 +1104,7 @@ line-height:16px;
 	padding:10px;
 	font-weight:500;
 	flex:1;
-	color:inherit;
+	color:var(--canvas-text-secondary-background-color);
 }
 
 .proc_page .upper span:hover,
