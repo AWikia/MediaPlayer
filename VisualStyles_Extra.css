@@ -112,6 +112,14 @@
 	color:var(--highlight-text-background-color);
 }
 
+.visualstyle-basic.visualmode-contrast .tabs a,
+.visualstyle-basic.visualmode-contrast .media-controls .bottom .playing {
+	background-clip:padding-box;
+	background-color:var(--canvas-background-color);
+	border-color:transparent;
+	color:var(--canvas-text-background-color);
+}
+
 .visualstyle-basic.visualmode-contrast .tabs a:hover,
 .visualstyle-basic.visualmode-contrast .media-controls .bottom .playing:hover {
 	background-color:var(--canvas-secondary-background-color);
