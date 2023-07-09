@@ -2,9 +2,22 @@
 
 		document.querySelector("head").insertAdjacentHTML('afterbegin', 
 		'<link rel="manifest" href="manifest.json" crossorigin="use-credentials">' +
+		// Standard Light
 		'<link rel="shortcut icon" href="favicon.ico">' +
 		'<link rel="icon" href="favicon.ico">' +
-		'<link rel="favicon" href="favicon.ico">'
+		'<link rel="favicon" href="favicon.ico">' +
+		// Standard Dark
+		'<link rel="shortcut icon" href="favicon_dark.ico" media="(prefers-color-scheme:dark)">' +
+		'<link rel="icon" href="favicon_dark.ico" media="(prefers-color-scheme:dark)">' +
+		'<link rel="favicon" href="favicon_dark.ico" media="(prefers-color-scheme:dark)">' +
+		// High Contrast Light
+		'<link rel="shortcut icon" href="favicon_hc.ico" media="(forced-colors:active)">' +
+		'<link rel="icon" href="favicon_hc.ico" media="(forced-colors:active)">' +
+		'<link rel="favicon" href="favicon_hc.ico" media="(forced-colors:active)">' +
+		// High Contrast Dark
+		'<link rel="shortcut icon" href="favicon_hcDark.ico" media="(forced-colors:active) and (prefers-color-scheme:dark)">' +
+		'<link rel="icon" href="favicon_hcDark.ico" media="(forced-colors:active) and (prefers-color-scheme:dark)">' +
+		'<link rel="favicon" href="favicon_hcDark.ico" media="(forced-colors:active) and (prefers-color-scheme:dark)">' 
 		);
 	if (getKey('mp-default-page') === '-1') {
 		insertKey('mp-default-page', 'recent' );
