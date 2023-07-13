@@ -1138,7 +1138,7 @@ line-height:16px;
 
 .proc_page footer {
 	background-color:rgba(var(--canvas-tabs-background-color),var(--canvas-active-tabs-opacity));
-	padding-right:var(--scrollbar-width);
+	padding-right:10px;
 	display:flex;
 	border-bottom:1px solid var(--inactive-text-background-color);
 	align-items:center;
