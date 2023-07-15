@@ -37,18 +37,11 @@
 		default_page = getKey('mp-default-page');
 		$('body').attr("page",  default_page);
 		document.getElementById("LandingPage" + ['01','02','03','04','05'][ ['recent','libraries','queue','playlists','sessions'].indexOf(default_page) ]).checked=true;
-		SetPage(page=0);
+		sliderInterval=null;
+		window.MP_playbackspeed = 1;
 
 })();
 
-
-
-/* Page Changing Functions */
-function SetPage(page=0) {
-		$('.page.performancepage').attr("page", page);
-		$('.page.performancepage .left .button.selected, .page .right').removeClass("selected");
-		$('.page.performancepage .left .button.p' + page + ', .page .right.p'+ page).addClass("selected");
-}
 
 
 
@@ -91,12 +84,13 @@ function ChangeTimerValue() {
 	secs = String( Math.floor( (value / 1000) % 60 ) ).padStart(2, '0');
 	ms = String( (value % 1000) ).padStart(3, '0');
 	document.querySelector(".media-controls .timer .timer_start").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
+	document.querySelector(".media-controls .timer .timer_range").setAttribute("value",value);
 // End
-	value = document.querySelector(".media-controls .timer .timer_range").getAttribute("max");
-	hours = String( Math.floor( value / 3600000 ) ).padStart(2, '0');
-	mins = String( Math.floor( (value / 60000) % 60 ) ).padStart(2, '0');
-	secs = String( Math.floor( (value / 1000) % 60 ) ).padStart(2, '0');
-	ms = String( (value % 1000) ).padStart(3, '0');
+	valueM = document.querySelector(".media-controls .timer .timer_range").getAttribute("max");
+	hours = String( Math.floor( valueM / 3600000 ) ).padStart(2, '0');
+	mins = String( Math.floor( (valueM / 60000) % 60 ) ).padStart(2, '0');
+	secs = String( Math.floor( (valueM / 1000) % 60 ) ).padStart(2, '0');
+	ms = String( (valueM % 1000) ).padStart(3, '0');
 	document.querySelector(".media-controls .timer .timer_end").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
 
 
@@ -110,6 +104,12 @@ function TogglePlayPause(playtext="Play",pausetext="Pause") {
 	state = parseInt(elem.getAttribute("state"));
 	elem.setAttribute("title",[playtext,pausetext][state]);
 	elemIcon.innerHTML = ["play_arrow","pause"][state];
+	if (state === 1) {
+		sliderInterval = setInterval(UpdateTimer, 10,playtext,pausetext);
+	} else {
+		clearInterval(sliderInterval);
+		sliderInterval = null;
+	}
 }
 
 function ToggleRandomness(offtext="No Random Selection",ontext="Active Random Selection") {
@@ -141,6 +141,60 @@ function ChangeVolume(voltext="Volume",mutetext="Muted") {
 	 
 }
 
+function UpdateTimer(playtext="Play",pausetext="Pause") {
+	elem = document.querySelector(".media-controls .timer .timer_range");
+	norepeat = (document.querySelector(".media-controls .bottom .controls .repeat").getAttribute('state') == 0)
+	value = parseInt(elem.value) + (10 * window.MP_playbackspeed);
+	max = parseInt(elem.getAttribute("max"));
+	document.querySelector(".media-controls .timer .timer_range").value= value;
+	ChangeTimerValue();
+	elem.style.setProperty("--range-percent",  (( ((elem.value) - 0 ) * 100) / (elem.getAttribute('max') - 0) ) + '%'  );
+	if (value >= max) {
+		document.querySelector(".media-controls .timer .timer_range").value = 0;
+		ChangeTimerValue();
+		elem.style.setProperty("--range-percent",  (( ((elem.value) - 0 ) * 100) / (elem.getAttribute('max') - 0) ) + '%'  );
+		if (norepeat) {
+			TogglePlayPause(playtext);
+		}
+	}
+}
+
+function GoForward(secs=10) {
+
+	elem = document.querySelector(".media-controls .timer .timer_range");
+	norepeat = (document.querySelector(".media-controls .bottom .controls .repeat").getAttribute('state') == 0)
+	max = parseInt(elem.getAttribute("max"));
+	value = Math.min(parseInt(elem.value) + (secs * 1000), max);
+	document.querySelector(".media-controls .timer .timer_range").value= value;
+	ChangeTimerValue();
+	elem.style.setProperty("--range-percent",  (( ((elem.value) - 0 ) * 100) / (elem.getAttribute('max') - 0) ) + '%'  );
+}
+
+function GoBackward(secs=10) {
+
+	elem = document.querySelector(".media-controls .timer .timer_range");
+	norepeat = (document.querySelector(".media-controls .bottom .controls .repeat").getAttribute('state') == 0)
+	max = 0;
+	value = Math.max(parseInt(elem.value) - (secs * 1000), max);
+	document.querySelector(".media-controls .timer .timer_range").value= value;
+	ChangeTimerValue();
+	elem.style.setProperty("--range-percent",  (( ((elem.value) - 0 ) * 100) / (elem.getAttribute('max') - 0) ) + '%'  );
+}
+
+
+function SetSpeed(id=3) {
+	window.MP_playbackspeed = [0.25,0.5,0.75,1,1.25,1.5,1.75,2][id]
+	var x = document.querySelector(".media-controls .bottom .controls .cpe-dropdown .cpe-dropdown-level-nested__content .cpe-list.speeds li.selected")
+	if (x) {
+		x.classList.remove("selected");
+	}
+	var y = document.querySelector(".media-controls .bottom .controls .cpe-dropdown .cpe-dropdown-level-nested__content .cpe-list.speeds li[data-speed='" + id + "']");
+	if (y) {
+		y.classList.add("selected");
+	}
+
+
+}
 
 /* Fullscreen */
 function toggleFullScreen() {
