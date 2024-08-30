@@ -143,7 +143,7 @@
 										<div class="cpe-dropdown__content is-right-aligned">
 											<ul class="cpe-list is-linked">
 												<li class="is-hidden">
-													<input name="audiofile" id="AudioFile" accept="audio/*" onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+													<input name="audiofile" id="AudioFile" accept="audio/*" multiple onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
 												</li>
 												<li>
 													<a><label for="AudioFile">
@@ -817,7 +817,7 @@
 									shuffle
 								</span>
 							</button>
-							<button class="cpe-button is-square is-tertiary is-unaccented prev" title="Previous">
+							<button class="cpe-button is-square is-tertiary is-unaccented prev" title="Previous" onclick="PrevAudio()">
 								<span translate="no" class="cpe-icon material-icons">
 									skip_previous
 								</span>
@@ -827,7 +827,7 @@
 									play_arrow
 								</span>
 							</button>
-							<button class="cpe-button is-square is-tertiary is-unaccented next" title="Next">
+							<button class="cpe-button is-square is-tertiary is-unaccented next" title="Next" onclick="NextAudio()">
 								<span translate="no" class="cpe-icon material-icons">
 									skip_next
 								</span>
@@ -868,6 +868,15 @@
 								</div>
 								<div class="cpe-dropdown__content is-right-aligned is-not-scrollable">
 									<ul class="cpe-list is-linked">
+										<li class="fullscreen-mobile">
+											<a onclick="toggleFullScreen()">
+												<span>Full Screen (F11)</span>
+												<span translate="no" class="cpe-icon cpe-icon-small material-icons">
+													<span class="fullscreen-off">open_in_full</span>
+													<span class="fullscreen-on">close_fullscreen</span>
+												</span>
+											</a>
+										</li>
 										<li>
 											<a>
 												<span>Properties</span>
