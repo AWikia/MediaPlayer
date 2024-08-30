@@ -85,6 +85,9 @@
 	</div>
 	<div class="top-gap" style="pointer-events:none;"></div>
 	<container>
+		<div class="audio-player" style="display:none">
+			<audio id="audio-player" controls="controls" src="media/Sceptrum.ogg" type="audio/mpeg">
+		</div>
 		<div class="media-container">
 			<div class="tabs-with-page">
 				<header class="tabs">
@@ -139,8 +142,11 @@
 										</div>
 										<div class="cpe-dropdown__content is-right-aligned">
 											<ul class="cpe-list is-linked">
+												<li class="is-hidden">
+													<input name="audiofile" id="AudioFile" accept="audio/*" onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+												</li>
 												<li>
-													<a>
+													<a><label for="AudioFile">
 														<span translate="no" class="cpe-icon cpe-icon-small material-icons">
 															folder_open
 														</span>
@@ -154,7 +160,7 @@
 													</a>
 												</li>
 												<li>
-													<a>
+													<a onclick="URLAudio()">
 														<span translate="no" class="cpe-icon cpe-icon-small material-icons">language</span>
 														<span>URL Address</span>
 													</a>
@@ -795,7 +801,7 @@
 					<div class="lunalevit"></div>
 					<div class="timer">
 						<span class="timer_start">00:00:00.000</span>
-						<input type="range" class="timer_range" oninput="ChangeTimerValue()" min="0" max="28000" value="0" step="2"></input>
+						<input type="range" class="timer_range" oninput="UpdateAudio()" min="0" max="28000" value="0" step="2"></input>
 						<span class="timer_end">00:00:28.000</span>
 					</div>
 					<div class="bottom">
