@@ -310,7 +310,6 @@ function FileAudio(files,playtext="Play",pausetext="Pause") {
 	var audio = document.getElementById("audio-player");
 	if (files.length === 1) {
 		var url = window.URL.createObjectURL(files[0]);
-		console.log(files[0])
 	} else {
 		var url = [];
 		for (let i = 0; i < files.length; i++) {
