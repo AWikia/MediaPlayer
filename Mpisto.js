@@ -45,6 +45,7 @@
 		window.MP_audioloopOnce = false; // Looping of Track
 		window.MP_audioID = 0; // Audio ID
 		window.MP_audioFiles = "media/Sceptrum.ogg"; // Audio File Name (Or an array of audio names)
+		window.MP_audioFileNames = "Sceptrum.ogg"; // Audio File Name (Or an array of audio names)
 		setTimeout(InitTimerValue,0);
 
 })();
@@ -99,7 +100,7 @@ function InitTimerValue() {
 	ms = String( (valueM % 1000) ).padStart(3, '0');
 	document.querySelector(".media-controls .timer .timer_range").setAttribute("max",valueM);
 	document.querySelector(".media-controls .timer .timer_end").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
-
+	document.querySelector(".media-controls .bottom .playing .name span").innerHTML = (hasMultipleAudio() ) ? window.MP_audioFileNames[window.MP_audioID] : window.MP_audioFileNames
 
 }
 
@@ -168,7 +169,7 @@ function TogglePlayPause(playtext="Play",pausetext="Pause") {
 async function playAudio(elem,playtext="Play") {
   try {
     await elem.play();
-	InitTimerValue()
+	InitTimerValue();
   } catch (err) {
 	AddFloatingBanner('Failed to play audio content: <br>'+err,'alert');
     TogglePlayPause(playtext)
@@ -296,6 +297,15 @@ function URLAudio(playtext="Play",pausetext="Pause") {
 	var url = prompt("Audio URL");
 	if (url.startsWith("[")) { // Array of multiple urls
 		var url = JSON.parse(url);
+		window.MP_audioFileNames = [];
+		for (let i = 0; i < url.length; i++) {
+			filename = decodeURIComponent(url[i]).split("/");
+			window.MP_audioFileNames[i] = filename[filename.length-1];
+		}
+
+	} else {
+		filename = decodeURIComponent(url).split("/");
+		window.MP_audioFileNames = filename[filename.length-1];
 	}
 	if (window.MP_audioPlaying) {
 		TogglePlayPause(playtext,pausetext);
@@ -310,10 +320,13 @@ function FileAudio(files,playtext="Play",pausetext="Pause") {
 	var audio = document.getElementById("audio-player");
 	if (files.length === 1) {
 		var url = window.URL.createObjectURL(files[0]);
+		window.MP_audioFileNames = files[0].name;
 	} else {
 		var url = [];
+		window.MP_audioFileNames = [];
 		for (let i = 0; i < files.length; i++) {
 			url[i] = window.URL.createObjectURL(files[i]);
+			window.MP_audioFileNames[i] = files[i].name;
 		}
 	}
 	if (window.MP_audioPlaying) {

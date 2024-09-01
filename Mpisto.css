@@ -1556,6 +1556,10 @@ line-height:16px;
 	.media-controls .bottom .playing .name span {
 		display:none;
 	}
+	
+	.volume .cpe-dropdown__content {
+		left:0;
+	}
 
 }
 
