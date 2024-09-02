@@ -144,6 +144,7 @@
 											<ul class="cpe-list is-linked">
 												<li class="is-hidden">
 													<input name="audiofile" id="AudioFile" accept="audio/*" multiple onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+													<input name="audiofile" id="FolderFile" accept="audio/*" webkitdirectory onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
 												</li>
 												<li>
 													<a><label for="AudioFile">
@@ -154,10 +155,10 @@
 													</label></a>
 												</li>
 												<li>
-													<a>
+													<a><label for="FolderFile">
 														<span translate="no" class="cpe-icon cpe-icon-small material-icons">topic</span>
 														<span>Φάκελος</span>
-													</a>
+													</label></a>
 												</li>
 												<li>
 													<a onclick="URLAudio('Αναπαραγωγή','Παύση')">
