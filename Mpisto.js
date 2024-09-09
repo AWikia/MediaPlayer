@@ -44,8 +44,8 @@
 		window.MP_audioloop = false; // Looping of Playlist
 		window.MP_audioloopOnce = false; // Looping of Track
 		window.MP_audioID = 0; // Audio ID
-		window.MP_audioFiles = "media/Sceptrum.ogg"; // Audio File Name (Or an array of audio names)
-		window.MP_audioFileNames = "Sceptrum.ogg"; // Audio File Name (Or an array of audio names)
+		window.MP_audioFiles = ["media/Sceptrum.ogg"]; // Audio File Name (Or an array of audio names)
+		window.MP_audioFileNames = ["Sceptrum.ogg"]; // Audio File Name (Or an array of audio names)
 		setTimeout(InitTimerValue,0);
 
 })();
@@ -100,9 +100,23 @@ function InitTimerValue() {
 	ms = String( (valueM % 1000) ).padStart(3, '0');
 	document.querySelector(".media-controls .timer .timer_range").setAttribute("max",valueM);
 	document.querySelector(".media-controls .timer .timer_end").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
-	document.querySelector(".media-controls .bottom .playing .name span").innerHTML = (hasMultipleAudio() ) ? window.MP_audioFileNames[window.MP_audioID] : window.MP_audioFileNames
+	document.querySelector(".media-controls .bottom .playing .name span").innerHTML = window.MP_audioFileNames[window.MP_audioID]
 
 }
+
+function UpdateTrackDuration() {
+// End
+	var audio = document.getElementById("audio-player");
+	elem = document.querySelector("main.queue .proc_page article header[trackid='" + String( window.MP_audioID ).padStart(2, '0') + "'] .duration");
+	
+	valueM = Math.round(audio.duration*1000);
+	hours = String( Math.floor( valueM / 3600000 ) ).padStart(2, '0');
+	mins = String( Math.floor( (valueM / 60000) % 60 ) ).padStart(2, '0');
+	secs = String( Math.floor( (valueM / 1000) % 60 ) ).padStart(2, '0');
+	elem.innerHTML = hours + ":" + mins + ":" + secs;
+
+}
+
 
 
 function ChangeTimerValue() {
@@ -157,11 +171,19 @@ function TogglePlayPause(playtext="Play",pausetext="Pause") {
 	if (state === 1) {
 		sliderInterval = setInterval(UpdateTimer, 10,playtext,pausetext);
 		window.MP_audioPlaying = true;
+		var sel = document.querySelector("main.queue .proc_page article header[trackid='" + String( window.MP_audioID ).padStart(2, '0') + "']");
+		if (sel) {
+			sel.classList.add("selected");
+		}
 		playAudio(audio,playtext); // Audio Play
 	} else {
 		window.MP_audioPlaying = false;
 		clearInterval(sliderInterval);
 		sliderInterval = null;
+		var sel = document.querySelector("main.queue .proc_page article header[trackid].selected");
+		if (sel) {
+			sel.classList.remove("selected");
+		}
 		audio.pause(); // Audio Play
 	}
 }
@@ -170,6 +192,7 @@ async function playAudio(elem,playtext="Play") {
   try {
     await elem.play();
 	InitTimerValue();
+	UpdateTrackDuration();
   } catch (err) {
 	AddFloatingBanner('Failed to play audio content: <br>'+err,'alert');
     TogglePlayPause(playtext)
@@ -194,7 +217,7 @@ function ToggleRepeatness(offtext="No Repeat",ontext="Repeat All", onetext="Repe
 	elem.setAttribute("title",[offtext,ontext,onetext][state]);
 	elemIcon.innerHTML = ["repeat","repeat_on","repeat_one_on"][state];
 	window.MP_audioloop = (state!=0);
-	window.MP_audioloopOnce = ((state==2) || (state!=0 && !(hasMultipleAudio() )) )
+	window.MP_audioloopOnce = (state==2)
 	audio.loop=window.MP_audioloopOnce;
 }
 
@@ -217,7 +240,7 @@ function UpdateTimer(playtext="Play",pausetext="Pause") {
 	var audio = document.getElementById("audio-player");
 
 	elem = document.querySelector(".media-controls .timer .timer_range");
-	length = (hasMultipleAudio() ) ? (window.MP_audioFiles.length) - 1 : 0
+	length = (window.MP_audioFiles.length) - 1
 	norepeat = (!(window.MP_audioloop) && (window.MP_audioID == length) )
 	value = Math.round(audio.currentTime*1000);
 	max = parseInt(elem.getAttribute("max"));
@@ -230,10 +253,8 @@ function UpdateTimer(playtext="Play",pausetext="Pause") {
 		elem.style.setProperty("--range-percent",  (( ((elem.value) - 0 ) * 100) / (elem.getAttribute('max') - 0) ) + '%'  );
 		if (norepeat) {
 			TogglePlayPause(playtext);
-			if (hasMultipleAudio() ) {
-				window.MP_audioID=0;
-				startPlaying(playtext,pausetext,true);
-			}
+			window.MP_audioID=0;
+			startPlaying(playtext,pausetext,true);
 		} else if (!window.MP_audioloopOnce) {
 			NextAudio(playtext,pausetext);
 		}
@@ -295,17 +316,16 @@ function toggleFullScreen() {
 function URLAudio(playtext="Play",pausetext="Pause") {
 	var audio = document.getElementById("audio-player");
 	var url = prompt("Audio URL");
-	if (url.startsWith("[")) { // Array of multiple urls
-		var url = JSON.parse(url);
-		window.MP_audioFileNames = [];
-		for (let i = 0; i < url.length; i++) {
-			filename = decodeURIComponent(url[i]).split("/");
-			window.MP_audioFileNames[i] = filename[filename.length-1];
-		}
-
-	} else {
-		filename = decodeURIComponent(url).split("/");
-		window.MP_audioFileNames = filename[filename.length-1];
+	window.MP_audioFileNames = [];
+	if (!(url.startsWith("["))) { // Single URL, convert it to an array of a single item
+		var url = "[\"" + url + "\"]";
+	}
+	var url = JSON.parse(url);
+	clearTrackList();
+	for (let i = 0; i < url.length; i++) {
+		filename = decodeURIComponent(url[i]).split("/");
+		window.MP_audioFileNames[i] = filename[filename.length-1];
+		insertTrack(filename[filename.length-1],"",playtext,pausetext);
 	}
 	if (window.MP_audioPlaying) {
 		TogglePlayPause(playtext,pausetext);
@@ -315,19 +335,31 @@ function URLAudio(playtext="Play",pausetext="Pause") {
 	startPlaying(playtext,pausetext);
 }
 
+function URLAudioAdd(playtext="Play",pausetext="Pause") {
+	var url = prompt("Audio URL");
+	if (!(url.startsWith("["))) { // Single URL, convert it to an array of a single item
+		var url = "[\"" + url + "\"]";
+	}
+	var url = JSON.parse(url);
+	var oldlength = window.MP_audioFileNames.length
+	for (let i = 0; i < url.length; i++) {
+		filename = decodeURIComponent(url[i]).split("/");
+		window.MP_audioFiles[oldlength+i] = url[i];
+		window.MP_audioFileNames[oldlength+i] = filename[filename.length-1];
+		insertTrack(filename[filename.length-1],"",playtext,pausetext);
+	}
+}
+
 function FileAudio(files,playtext="Play",pausetext="Pause") {
 	window.URL = window.URL || window.webkitURL;
 	var audio = document.getElementById("audio-player");
-	if (files.length === 1) {
-		var url = window.URL.createObjectURL(files[0]);
-		window.MP_audioFileNames = files[0].name;
-	} else {
-		var url = [];
-		window.MP_audioFileNames = [];
-		for (let i = 0; i < files.length; i++) {
-			url[i] = window.URL.createObjectURL(files[i]);
-			window.MP_audioFileNames[i] = files[i].name;
-		}
+	window.MP_audioFileNames = [];
+	var url = [];
+	clearTrackList();
+	for (let i = 0; i < files.length; i++) {
+		url[i] = window.URL.createObjectURL(files[i]);
+		window.MP_audioFileNames[i] = files[i].name;
+		insertTrack(files[i].name,"",playtext,pausetext);
 	}
 	if (window.MP_audioPlaying) {
 		TogglePlayPause(playtext,pausetext);
@@ -335,6 +367,16 @@ function FileAudio(files,playtext="Play",pausetext="Pause") {
 	window.MP_audioFiles = url;
 	window.MP_audioID = 0;
 	startPlaying(playtext,pausetext);
+}
+
+function FileAudioAdd(files,playtext="Play",pausetext="Pause") {
+	window.URL = window.URL || window.webkitURL;
+	var oldlength = window.MP_audioFileNames.length
+	for (let i = 0; i < files.length; i++) {
+		window.MP_audioFiles[oldlength+i] = window.URL.createObjectURL(files[i]);
+		window.MP_audioFileNames[oldlength+i] = files[i].name;
+		insertTrack(files[i].name,"",playtext,pausetext);
+	}
 }
 
 /* Begins playing a new audio */
@@ -344,11 +386,7 @@ function startPlaying(playtext="Play",pausetext="Pause",nostart=false) {
 		TogglePlayPause(playtext,pausetext);
 	}
 	audio.currentTime=0;
-	if (hasMultipleAudio() ) {
-		audio.src=window.MP_audioFiles[window.MP_audioID];
-	} else {
-		audio.src=window.MP_audioFiles;
-	}
+	audio.src=window.MP_audioFiles[window.MP_audioID];
 	audio.playbackRate=window.MP_playbackspeed;
 	audio.volume=window.MP_volume / 100;
 	audio.loop=window.MP_audioloopOnce;
@@ -358,23 +396,41 @@ function startPlaying(playtext="Play",pausetext="Pause",nostart=false) {
 
 }
 
+function PlayTrack(id=0,playtext="Play",pausetext="Pause") {
+	window.MP_audioID= id;
+	startPlaying(playtext,pausetext);
+
+}
+
 /* Moving forward between songs */
 function PrevAudio(playtext="Play",pausetext="Pause") {
 	var audio = document.getElementById("audio-player");
 	oldplay=window.MP_audioPlaying;
-	if (hasMultipleAudio() ) {
-		audioid=window.MP_audioID;
-		window.MP_audioID=(audioid==0) ? window.MP_audioFiles.length-1 : (audioid-1)%window.MP_audioFiles.length
-	}
+	audioid=window.MP_audioID;
+	window.MP_audioID=(audioid==0) ? window.MP_audioFiles.length-1 : (audioid-1)%window.MP_audioFiles.length
 	startPlaying(playtext,pausetext);
 }
 
 function NextAudio(playtext="Play",pausetext="Pause") {
 	var audio = document.getElementById("audio-player");
 	oldplay=window.MP_audioPlaying;
-	if (hasMultipleAudio() ) {
-		audioid=window.MP_audioID;
-		window.MP_audioID=(audioid+1)%window.MP_audioFiles.length
-	}
+	audioid=window.MP_audioID;
+	window.MP_audioID=(audioid+1)%window.MP_audioFiles.length
 	startPlaying(playtext,pausetext);
+}
+
+/* Write new Tracks */
+function insertTrack(trackname="Sample",time="",playtext="Play",pausetext="Pause") {
+	str = 	'<header trackid="' + document.querySelectorAll("main.queue .proc_page section article .header[trackid]").length.toString().padStart(2, '0') + '" publisher="none" album="none" songname="' + trackname + '" class="header item" onclick="PlayTrack(' + document.querySelectorAll("main.queue .proc_page section article .header[trackid]").length + ',\'' + playtext + '\',\'' + pausetext + '\')">' +
+				'<span class="name">' + trackname + '</span>' +
+				'<span class="artist">-//-</span>' +
+				'<span class="album">-//-</span>' +
+				'<span class="duration">' + time + '</span>' +
+			'</header>'
+	document.querySelector("main.queue .proc_page section article").insertAdjacentHTML('beforeend',str);
+
+}
+
+function clearTrackList() {
+	document.querySelector("main.queue .proc_page section article").innerHTML = "";
 }

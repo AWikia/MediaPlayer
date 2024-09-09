@@ -1143,7 +1143,8 @@ line-height:16px;
 }
 
 .proc_page .upper span:hover,
-.proc_page .header.item:hover {
+.proc_page .header.item:hover,
+.proc_page .header.item.selected {
 	background-color:var(--canvas-text-fadeout-color);
 }
 

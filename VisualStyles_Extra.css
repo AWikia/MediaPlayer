@@ -6,7 +6,8 @@
 }
 
 .visualmode-contrast .proc_page .upper span:hover, 
-.visualmode-contrast .proc_page .header.item:hover {
+.visualmode-contrast .proc_page .header.item:hover,
+.visualmode-contrast .proc_page .header.item.selected {
 	background-color:var(--highlight-background-color);
 	color:var(--highlight-text-background-color);
 }
@@ -66,7 +67,8 @@
 
 /* High Contrast */
 .visualstyle-general.visualmode-contrast .proc_page .upper span:hover, 
-.visualstyle-general.visualmode-contrast .proc_page .header.item:hover {
+.visualstyle-general.visualmode-contrast .proc_page .header.item:hover,
+.visualstyle-general.visualmode-contrast .proc_page .header.item.selected {
 	background-color:var(--hyperlink-background-color);
 	color:var(--hyperlink-foreground-color);
 }
@@ -101,13 +103,15 @@
 }
 
 .visualstyle-basic .proc_page .upper span:hover, 
-.visualstyle-basic .proc_page .header.item:hover {
+.visualstyle-basic .proc_page .header.item:hover,
+.visualstyle-basic .proc_page .header.item.selected {
 	background-color:var(--hyperlink-fadeout-color);
 }
 
 /* High Contrast */
 .visualstyle-basic.visualmode-contrast .proc_page .upper span:hover, 
-.visualstyle-basic.visualmode-contrast .proc_page .header.item:hover {
+.visualstyle-basic.visualmode-contrast .proc_page .header.item:hover,
+.visualstyle-basic.visualmode-contrast .proc_page .header.item.selected {
 	background-color:var(--highlight-background-color);
 	color:var(--highlight-text-background-color);
 }
@@ -163,7 +167,8 @@
 
 /* High Contrast */
 .visualstyle-simple.visualmode-contrast .proc_page .upper span:hover, 
-.visualstyle-simple.visualmode-contrast .proc_page .header.item:hover {
+.visualstyle-simple.visualmode-contrast .proc_page .header.item:hover,
+.visualstyle-simple.visualmode-contrast .proc_page .header.item.selected {
 	background-color:var(--canvas-foreground-color);
 	color:var(--canvas-background-color);
 }

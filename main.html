@@ -470,10 +470,6 @@
 									<span translate="no" class="cpe-icon cpe-icon-small material-icons">delete</span>
 									<span>Εκκαθάριση</span>
 									</button>
-									<button class="cpe-button is-tertiary is-unaccented">
-									<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-									<span>Αναπαραγωγή Όλων</span>
-									</button>
 									<div class="cpe-dropdown">
 										<div class="cpe-button is-tertiary is-unaccented cpe-dropodwn__toggle">
 										<span translate="no" class="cpe-icon cpe-icon-small material-icons">folder_open</span>
@@ -482,27 +478,32 @@
 										</div>
 										<div class="cpe-dropdown__content is-right-aligned">
 											<ul class="cpe-list is-linked">
+												<li class="is-hidden">
+													<input name="audiofile" id="AudioFile2" accept="audio/*" multiple onchange="FileAudioAdd(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+													<input name="audiofile" id="FolderFile2" accept="audio/*" webkitdirectory onchange="FileAudioAdd(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+												</li>
 												<li>
-													<a>
+													<a><label for="AudioFile2">
 														<span translate="no" class="cpe-icon cpe-icon-small material-icons">
 															folder_open
 														</span>
 														<span>Αρχεία</span>
-													</a>
+													</label></a>
 												</li>
 												<li>
-													<a>
+													<a><label for="FolderFile2">
 														<span translate="no" class="cpe-icon cpe-icon-small material-icons">topic</span>
 														<span>Φάκελος</span>
-													</a>
+													</label></a>
 												</li>
 												<li>
-													<a>
+													<a onclick="URLAudioAdd('Αναπαραγωγή','Παύση')">
 														<span translate="no" class="cpe-icon cpe-icon-small material-icons">language</span>
 														<span>Διεύθυνση URL</span>
 													</a>
 												</li>
 											</ul>
+
 										</div>
 									</div>
 								</div>
@@ -514,23 +515,11 @@
 									<span class="duration">Διάρκεια</span>
 							</header>
 							<article>
-									<header publisher="none" album="none" songname="Sample Music 1" class="header item">
-										<span class="name">Sample Music 1</span>
+									<header trackid="00" publisher="none" album="none" songname="Sceptrum.ogg" class="header item" onclick="PlayTrack(0,'Αναπαραγωγή','Παύση')">
+										<span class="name">Sceptrum.ogg</span>
 										<span class="artist">-//-</span>
 										<span class="album">-//-</span>
-										<span class="duration">00:00:28</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 2" class="header item">
-										<span class="name">Sample Music 2</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:00:08</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 3" class="header item">
-										<span class="name">Sample Music 3</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:01:40</span>
+										<span class="duration">00:00:30</span>
 									</header>
 							</article>
 
@@ -820,7 +809,7 @@
 									shuffle
 								</span>
 							</button>
-							<button class="cpe-button is-square is-tertiary is-unaccented prev" title="Προηγούμενο" onclick="PrevAudio()">
+							<button class="cpe-button is-square is-tertiary is-unaccented prev" title="Προηγούμενο" onclick="PrevAudio('Αναπαραγωγή','Παύση')">
 								<span translate="no" class="cpe-icon material-icons">
 									skip_previous
 								</span>
@@ -830,7 +819,7 @@
 									play_arrow
 								</span>
 							</button>
-							<button class="cpe-button is-square is-tertiary is-unaccented next" title="Επόμεμνο" onclick="NextAudio()">
+							<button class="cpe-button is-square is-tertiary is-unaccented next" title="Επόμεμνο" onclick="NextAudio('Αναπαραγωγή','Παύση')">
 								<span translate="no" class="cpe-icon material-icons">
 									skip_next
 								</span>
