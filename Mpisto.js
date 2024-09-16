@@ -86,6 +86,23 @@ function hasMultipleAudio() {
 	return Array.isArray(window.MP_audioFiles);
 }
 
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+
+function isImage(img) {
+	return img.match(/[^/]+(jpg|png|gif|avif|webp|ico)$/)
+}
+
+function currentTrackName() {
+	return window.MP_audioFileNames[window.MP_audioID];
+}
+
+function currentTrackURLName() {
+	return window.MP_audioFiles[window.MP_audioID];
+}
+
 /** Bottom Bar **/
 
 /* Timer */
@@ -100,7 +117,7 @@ function InitTimerValue() {
 	ms = String( (valueM % 1000) ).padStart(3, '0');
 	document.querySelector(".media-controls .timer .timer_range").setAttribute("max",valueM);
 	document.querySelector(".media-controls .timer .timer_end").innerHTML = hours + ":" + mins + ":" + secs + "." + ms; 
-	document.querySelector(".media-controls .bottom .playing .name span").innerHTML = window.MP_audioFileNames[window.MP_audioID]
+	document.querySelector(".media-controls .bottom .playing .name span").innerHTML = currentTrackName()
 
 }
 
@@ -193,9 +210,14 @@ async function playAudio(elem,playtext="Play") {
     await elem.play();
 	InitTimerValue();
 	UpdateTrackDuration();
+	if (isImage(currentTrackName())) {
+		document.querySelector('body').style.setProperty("--album-icon", 'url(' + currentTrackURLName() + ')'  );
+	} else {
+		document.querySelector('body').style.removeProperty("--album-icon");
+	}
   } catch (err) {
 	AddFloatingBanner('Failed to play audio content: <br>'+err,'alert');
-    TogglePlayPause(playtext)
+	TogglePlayPause(playtext);
   }
 }
 
@@ -321,9 +343,11 @@ function URLAudio(playtext="Play",pausetext="Pause") {
 		var url = "[\"" + url + "\"]";
 	}
 	var url = JSON.parse(url);
+	window.MP_audioFiles = [];
 	clearTrackList();
 	for (let i = 0; i < url.length; i++) {
 		filename = decodeURIComponent(url[i]).split("/");
+		window.MP_audioFiles[i] = url[i];
 		window.MP_audioFileNames[i] = filename[filename.length-1];
 		insertTrack(filename[filename.length-1],"",playtext,pausetext);
 	}
@@ -354,17 +378,16 @@ function FileAudio(files,playtext="Play",pausetext="Pause") {
 	window.URL = window.URL || window.webkitURL;
 	var audio = document.getElementById("audio-player");
 	window.MP_audioFileNames = [];
-	var url = [];
+	window.MP_audioFiles = [];
 	clearTrackList();
 	for (let i = 0; i < files.length; i++) {
-		url[i] = window.URL.createObjectURL(files[i]);
+		window.MP_audioFiles[i] = window.URL.createObjectURL(files[i]);
 		window.MP_audioFileNames[i] = files[i].name;
 		insertTrack(files[i].name,"",playtext,pausetext);
 	}
 	if (window.MP_audioPlaying) {
 		TogglePlayPause(playtext,pausetext);
 	}
-	window.MP_audioFiles = url;
 	window.MP_audioID = 0;
 	startPlaying(playtext,pausetext);
 }
@@ -379,6 +402,73 @@ function FileAudioAdd(files,playtext="Play",pausetext="Pause") {
 	}
 }
 
+function DropAudio(ev,playtext="Play",pausetext="Pause") {
+	ev.preventDefault();
+	window.URL = window.URL || window.webkitURL;
+	var audio = document.getElementById("audio-player");
+	window.MP_audioFileNames = [];
+	window.MP_audioFiles = [];
+	clearTrackList();
+	var files = ev.dataTransfer.getData("Files");
+	
+	
+	  if (ev.dataTransfer.items) {
+		// Use DataTransferItemList interface to access the file(s)
+		[...ev.dataTransfer.items].forEach((item, i) => {
+		  // If dropped items aren't files, reject them
+		  if (item.kind === "file") {
+			const file = item.getAsFile();
+			window.MP_audioFiles[i] = window.URL.createObjectURL(file);
+			window.MP_audioFileNames[i] = file.name;
+			insertTrack(file.name,"",playtext,pausetext);
+		  }
+		});
+	  } else {
+		// Use DataTransfer interface to access the file(s)
+		[...ev.dataTransfer.files].forEach((file, i) => {
+			window.MP_audioFiles[i] = window.URL.createObjectURL(file);
+			window.MP_audioFileNames[i] = file.name;
+			insertTrack(file.name,"",playtext,pausetext);
+		});
+	  }
+
+	if (window.MP_audioPlaying) {
+		TogglePlayPause(playtext,pausetext);
+	}
+	window.MP_audioID = 0;
+	startPlaying(playtext,pausetext);
+}
+
+function DropAudioAdd(ev,playtext="Play",pausetext="Pause") {
+	ev.preventDefault();
+	window.URL = window.URL || window.webkitURL;
+	var oldlength = window.MP_audioFileNames.length
+
+	var files = ev.dataTransfer.getData("Files");
+	
+	
+	  if (ev.dataTransfer.items) {
+		// Use DataTransferItemList interface to access the file(s)
+		[...ev.dataTransfer.items].forEach((item, i) => {
+		  // If dropped items aren't files, reject them
+		  if (item.kind === "file") {
+			const file = item.getAsFile();
+			window.MP_audioFiles[oldlength+i] = window.URL.createObjectURL(file);
+			window.MP_audioFileNames[oldlength+i] = file.name;
+			insertTrack(file.name,"",playtext,pausetext);
+		  }
+		});
+	  } else {
+		// Use DataTransfer interface to access the file(s)
+		[...ev.dataTransfer.files].forEach((file, i) => {
+			window.MP_audioFiles[oldlength+i] = window.URL.createObjectURL(file);
+			window.MP_audioFileNames[oldlength+i] = file.name;
+			insertTrack(file.name,"",playtext,pausetext);
+		});
+	  }
+
+}
+
 /* Begins playing a new audio */
 function startPlaying(playtext="Play",pausetext="Pause",nostart=false) {
 	var audio = document.getElementById("audio-player");
@@ -386,7 +476,11 @@ function startPlaying(playtext="Play",pausetext="Pause",nostart=false) {
 		TogglePlayPause(playtext,pausetext);
 	}
 	audio.currentTime=0;
-	audio.src=window.MP_audioFiles[window.MP_audioID];
+	if (isImage(currentTrackName())) {
+		audio.src="Blank.mp3";
+	} else {
+		audio.src=currentTrackURLName();
+	}
 	audio.playbackRate=window.MP_playbackspeed;
 	audio.volume=window.MP_volume / 100;
 	audio.loop=window.MP_audioloopOnce;
@@ -421,14 +515,17 @@ function NextAudio(playtext="Play",pausetext="Pause") {
 
 /* Write new Tracks */
 function insertTrack(trackname="Sample",time="",playtext="Play",pausetext="Pause") {
-	str = 	'<header trackid="' + document.querySelectorAll("main.queue .proc_page section article .header[trackid]").length.toString().padStart(2, '0') + '" publisher="none" album="none" songname="' + trackname + '" class="header item" onclick="PlayTrack(' + document.querySelectorAll("main.queue .proc_page section article .header[trackid]").length + ',\'' + playtext + '\',\'' + pausetext + '\')">' +
+	len = document.querySelectorAll("main.queue .proc_page section article .header[trackid]").length;
+	str = 	'<header trackid="' + len.toString().padStart(2, '0') + '" publisher="none" album="none" songname="' + trackname + '" class="header item" onclick="PlayTrack(' + len + ',\'' + playtext + '\',\'' + pausetext + '\')">' +
 				'<span class="name">' + trackname + '</span>' +
 				'<span class="artist">-//-</span>' +
 				'<span class="album">-//-</span>' +
 				'<span class="duration">' + time + '</span>' +
 			'</header>'
 	document.querySelector("main.queue .proc_page section article").insertAdjacentHTML('beforeend',str);
-
+	if (isImage(trackname)) {
+		document.querySelector("main.queue .proc_page article header[trackid='" + String( len ).padStart(2, '0') + "']").style.setProperty("--self-album-icon", 'url(' + window.MP_audioFiles[len] + ')'  );
+	}
 }
 
 function clearTrackList() {

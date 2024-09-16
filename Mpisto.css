@@ -1005,7 +1005,8 @@ line-height:16px;
 	color:var(--canvas-text-background-color);
 	top:0;
 	position:relative;
-	padding-right:var(--scrollbar-width);
+	/*padding-right:var(--scrollbar-width);*/
+	overflow-y:scroll;
 	transition:background-color var(--transition-duration) var(--transition-timing-function);
 	scrollbar-color:transparent transparent;
 	/* Track */
@@ -1341,7 +1342,7 @@ line-height:16px;
 .proc_page .header.item .name::before {
     content:"";
     align-self:center;
-    background-image:url("AppIcons/Music.ico");
+    background-image:var(--self-album-icon,url("AppIcons/Music.ico"));
     background-size:100%;
     background-position:center;
     background-repeat:no-repeat;
@@ -1352,7 +1353,7 @@ line-height:16px;
 
 .proc_page .header.item[videoname] .name::before,
 .media-controls .bottom .playing[videoname] .name::before {
-    background-image:url("AppIcons/Video.ico"); 
+    background-image:var(--self-album-icon,url("AppIcons/Video.ico")); 
 }
 
 .proc_page .header.item[videoname*="QQC_Session"] .name::before,
@@ -1362,24 +1363,8 @@ line-height:16px;
 
 .proc_page .header.item[photoname] .name::before,
 .media-controls .bottom .playing[photoname] .name::before {
-    background-image:url("AppIcons/Photo.ico"); 
+    background-image:var(--self-album-icon,url("AppIcons/Photo.ico")); 
 }
-
-.proc_page .header.item[photoname="Test Pic"] .name::before,
-.media-controls .bottom .playing[photoname="Test Pic"] .name::before {
-    background-image:url("Photos/Test Pic.png"); 
-}
-
-.proc_page .header.item[photoname="EvePride"] .name::before,
-.media-controls .bottom .playing[photoname="EvePride"] .name::before {
-    background-image:url("Photos/EvePride.png"); 
-}
-
-.proc_page .header.item[photoname="Banner_Blue"] .name::before,
-.media-controls .bottom .playing[photoname="Banner_Blue"] .name::before {
-    background-image:url("Photos/Banner_Blue.png"); 
-}
-
 
 /* Settings Page */
 .settings_page input#AppTheme05:not(:checked),
@@ -1455,7 +1440,7 @@ line-height:16px;
 	transition:color var(--transition-duration) var(--transition-timing-function), background-color var(--transition-duration) var(--transition-timing-function);
 	border:1px solid transparent;
 	border-radius:var(--border-radius);
-	width:200px;
+	width:230px;
 }
 
 .media-controls .bottom .playing:hover { 
@@ -1494,13 +1479,13 @@ line-height:16px;
     height:auto;
     font-size:inherit;
     text-align:left;
-    width:126px
+    width:156px
 }
 
 .media-controls .bottom .playing .name::before {
 	content:"";
     align-self:center;
-    background-image:url("AppIcons/Music.ico");
+    background-image:var(--album-icon,url("AppIcons/Music.ico"));
     background-size:100%;
     background-position:center;
     background-repeat:no-repeat;
