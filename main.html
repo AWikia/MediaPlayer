@@ -89,704 +89,710 @@
 			<audio id="audio-player" preload="metadata" controls="controls" src="media/Sceptrum.ogg">
 		</div>
 		<div class="media-container">
-			<div class="tabs-with-page">
-				<header class="tabs">
+			<div class="media-container__wrapper">
+				<div class="now-playing">
 					<div class="lunalevit"></div>
-					<div class="search__container cpe-dropdown" cpe-orient="land">
-						<a class="search has-icon">
+					<div class="img"></div>
+				</div>
+				<div class="tabs-with-page">
+					<header class="tabs">
+						<div class="lunalevit"></div>
+						<div class="search__container cpe-dropdown" cpe-orient="land">
+							<a class="search has-icon">
 
-						</a>
-						<div class="cpe-dropdown__content">
-							<ul class="cpe-list">
-								<li>
-									<div class="pageheader-search">
-										<input type="search" name="search" class="cpe-input media-search" placeholder="Αναζήτηση πολυμέσων" autocapitalize="sentences" id="searchInput" autocomplete="off">
-										<button for="searchButton2" class="cpe-button">
-											<span translate="no" class="cpe-icon cpe-icon-small material-icons">
-												search
-											</span>
-										</button>
-									</div>
-								</li>
-							</ul>
+							</a>
+							<div class="cpe-dropdown__content">
+								<ul class="cpe-list">
+									<li>
+										<div class="pageheader-search">
+											<input type="search" name="search" class="cpe-input media-search" placeholder="Αναζήτηση πολυμέσων" autocapitalize="sentences" id="searchInput" autocomplete="off">
+											<button for="searchButton2" class="cpe-button">
+												<span translate="no" class="cpe-icon cpe-icon-small material-icons">
+													search
+												</span>
+											</button>
+										</div>
+									</li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<hr>
-					<div class="items">
-						<a class="recent has-icon" onclick="Tab0()">Πρόσφατα</a>
-						<a class="libraries has-icon" onclick="Tab1()">Βιβλιοθήκες</a>
-						<a class="queue has-icon" onclick="Tab2()">Στην Ουρά</a>
-						<a class="playlists has-icon" onclick="Tab3()">Λίστες Αναπαραγωγής</a>
-						<a class="sessions has-icon" onclick="Tab4()">Συνεδρίες QQC</a>
-					</div>
-					<div class="separator"></div>
-					<a class="settings has-icon" onclick="Tab5()">Ρυθμίσεις</a>
-				</header>
-				<!--Recent-->
-				<main class="recent" ondrop="DropAudio(event,'Αναπαραγωγή','Παύση')">
-					<div class="proc_page">
-						<section>
-							<footer>
-								<div class="lunalevit"></div>
-								<h2>Πρόσφατα</h2>
-								<div class="cpe-button-group">
-									<button class="cpe-button is-tertiary is-unaccented">
-									<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-									<span>Αναπαραγωγή Όλων</span>
-									</button>
-									<div class="cpe-dropdown">
-										<div class="cpe-button is-tertiary is-unaccented cpe-dropodwn__toggle">
-										<span translate="no" class="cpe-icon cpe-icon-small material-icons">folder_open</span>
-										<span>Άνοιγμα</span>
-										<span translate="no" class="cpe-icon cpe-icon-large cpe-icon-tiny cpe-dropdown__toggle-chevron material-icons">arrow_drop_down</span>
-										</div>
-										<div class="cpe-dropdown__content is-right-aligned">
-											<ul class="cpe-list is-linked">
-												<li class="is-hidden">
-													<input name="audiofile" id="AudioFile" accept="audio/*,image/*" multiple onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
-													<input name="audiofile" id="FolderFile" accept="audio/*,image/*" webkitdirectory onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
-												</li>
-												<li>
-													<a><label for="AudioFile">
-														<span translate="no" class="cpe-icon cpe-icon-small material-icons">
-															folder_open
-														</span>
-														<span>Αρχεία</span>
-													</label></a>
-												</li>
-												<li>
-													<a><label for="FolderFile">
-														<span translate="no" class="cpe-icon cpe-icon-small material-icons">topic</span>
-														<span>Φάκελος</span>
-													</label></a>
-												</li>
-												<li>
-													<a onclick="URLAudio('Αναπαραγωγή','Παύση')">
-														<span translate="no" class="cpe-icon cpe-icon-small material-icons">language</span>
-														<span>Διεύθυνση URL</span>
-													</a>
-												</li>
-											</ul>
+						<hr>
+						<div class="items">
+							<a class="recent has-icon" onclick="Tab0()">Πρόσφατα</a>
+							<a class="libraries has-icon" onclick="Tab1()">Βιβλιοθήκες</a>
+							<a class="queue has-icon" onclick="Tab2()">Στην Ουρά</a>
+							<a class="playlists has-icon" onclick="Tab3()">Λίστες Αναπαραγωγής</a>
+							<a class="sessions has-icon" onclick="Tab4()">Συνεδρίες QQC</a>
+						</div>
+						<div class="separator"></div>
+						<a class="settings has-icon" onclick="Tab5()">Ρυθμίσεις</a>
+					</header>
+					<!--Recent-->
+					<main class="recent" ondrop="DropAudio(event,'Αναπαραγωγή','Παύση')">
+						<div class="proc_page">
+							<section>
+								<footer>
+									<div class="lunalevit"></div>
+									<h2>Πρόσφατα</h2>
+									<div class="cpe-button-group">
+										<button class="cpe-button is-tertiary is-unaccented">
+										<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+										<span>Αναπαραγωγή Όλων</span>
+										</button>
+										<div class="cpe-dropdown">
+											<div class="cpe-button is-tertiary is-unaccented cpe-dropodwn__toggle">
+											<span translate="no" class="cpe-icon cpe-icon-small material-icons">folder_open</span>
+											<span>Άνοιγμα</span>
+											<span translate="no" class="cpe-icon cpe-icon-large cpe-icon-tiny cpe-dropdown__toggle-chevron material-icons">arrow_drop_down</span>
+											</div>
+											<div class="cpe-dropdown__content is-right-aligned">
+												<ul class="cpe-list is-linked">
+													<li class="is-hidden">
+														<input name="audiofile" id="AudioFile" accept="audio/*,image/*" multiple onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+														<input name="audiofile" id="FolderFile" accept="audio/*,image/*" webkitdirectory onchange="FileAudio(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+													</li>
+													<li>
+														<a><label for="AudioFile">
+															<span translate="no" class="cpe-icon cpe-icon-small material-icons">
+																folder_open
+															</span>
+															<span>Αρχεία</span>
+														</label></a>
+													</li>
+													<li>
+														<a><label for="FolderFile">
+															<span translate="no" class="cpe-icon cpe-icon-small material-icons">topic</span>
+															<span>Φάκελος</span>
+														</label></a>
+													</li>
+													<li>
+														<a onclick="URLAudio('Αναπαραγωγή','Παύση')">
+															<span translate="no" class="cpe-icon cpe-icon-small material-icons">language</span>
+															<span>Διεύθυνση URL</span>
+														</a>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
-								</div>
-							</footer>
-<!--
-							<header class="header upper">
-							</header>
--->
-							<article>
-<!--
-								<header class="header heading">
-									<span class="name"><h2>Ενεργές Εφαρμογές</h2></span>
+								</footer>
+	<!--
+								<header class="header upper">
 								</header>
--->
-								<div class="grid-view">
-									<!--Item-->
-									<header publisher="none" album="none" songname="Sample Music 1" class="header item">
-										<span class="name">
-											<span class="title">Sample Music 1</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
+	-->
+								<article>
+	<!--
+									<header class="header heading">
+										<span class="name"><h2>Ενεργές Εφαρμογές</h2></span>
 									</header>
-									<!--Item-->
-									<header publisher="none" album="none" songname="Sample Music 2" class="header item">
-										<span class="name">
-											<span class="title">Sample Music 2</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" songname="Sample Music 3" class="header item">
-										<span class="name">
-											<span class="title">Sample Music 3</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" songname="Sample Music 4" class="header item">
-										<span class="name">
-											<span class="title">Sample Music 4</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" songname="Sample Music 5" class="header item">
-										<span class="name">
-											<span class="title">Sample Music 5</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" songname="Sample Music 6" class="header item">
-										<span class="name">
-											<span class="title">Sample Music 6</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
-									</header>
+	-->
+									<div class="grid-view">
+										<!--Item-->
+										<header publisher="none" album="none" songname="Sample Music 1" class="header item">
+											<span class="name">
+												<span class="title">Sample Music 1</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" songname="Sample Music 2" class="header item">
+											<span class="name">
+												<span class="title">Sample Music 2</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" songname="Sample Music 3" class="header item">
+											<span class="name">
+												<span class="title">Sample Music 3</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" songname="Sample Music 4" class="header item">
+											<span class="name">
+												<span class="title">Sample Music 4</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" songname="Sample Music 5" class="header item">
+											<span class="name">
+												<span class="title">Sample Music 5</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" songname="Sample Music 6" class="header item">
+											<span class="name">
+												<span class="title">Sample Music 6</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
+											</div>
+										</header>
 
-								</div>
-					
-							</article>
+									</div>
+						
+								</article>
 
-						</section>
-					</div>
-				</main>
-				<!--Libraries-->
-				<main class="libraries">
-					<div class="proc_page">
-						<section>
-							<footer>
-								<div class="lunalevit"></div>
-								<h2>Βιβλιοθήκες</h2>
-								<div class="cpe-button-group">
-									<button class="cpe-button is-tertiary is-unaccented">
-									<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-									<span>Αναπαραγωγή Όλων</span>
-									</button>
-									<button class="cpe-button is-tertiary is-unaccented">
-									<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
-									<span>Προσθήκη Φακέλου</span>
-									</button>
-								</div>
-							</footer>
-							<header class="header upper">
-									<span class="name">Όνομα Τραγουδιού</span>
-									<span class="artist">Καλλιτέχνης</span>
-									<span class="album">Άλμπουμ</span>
-									<span class="duration">Διάρκεια</span>
-							</header>
-							<article>
-								<header class="header heading">
-									<span class="name">
-										<h2>Μουσική</h2> 
+							</section>
+						</div>
+					</main>
+					<!--Libraries-->
+					<main class="libraries">
+						<div class="proc_page">
+							<section>
+								<footer>
+									<div class="lunalevit"></div>
+									<h2>Βιβλιοθήκες</h2>
+									<div class="cpe-button-group">
 										<button class="cpe-button is-tertiary is-unaccented">
-											<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-											<span>Αναπαραγωγή Όλων</span>
+										<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+										<span>Αναπαραγωγή Όλων</span>
 										</button>
-									</span>
-								</header>
-									<header publisher="none" album="none" songname="Sample Music 1" class="header item">
-										<span class="name">Sample Music 1</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:00:28</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 2" class="header item">
-										<span class="name">Sample Music 2</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:00:08</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 3" class="header item">
-										<span class="name">Sample Music 3</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:01:40</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 4" class="header item">
-										<span class="name">Sample Music 4</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">01:00:00</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 5" class="header item">
-										<span class="name">Sample Music 5</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:00:28</span>
-									</header>
-									<header publisher="none" album="none" songname="Sample Music 6" class="header item">
-										<span class="name">Sample Music 6</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:00:54</span>
-									</header>
-									<header publisher="A Techno" album="Musicals" songname="Other Musical" class="header item">
-										<span class="name">Other Musical</span>
-										<span class="artist">A Techno</span>
-										<span class="album">Musicals</span>
-										<span class="duration">00:09:33</span>
-									</header>
-								<header class="header heading">
-									<span class="name">
-										<h2>Βίντεο</h2>
 										<button class="cpe-button is-tertiary is-unaccented">
-											<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-											<span>Αναπαραγωγή Όλων</span>
+										<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
+										<span>Προσθήκη Φακέλου</span>
 										</button>
-									</span>
+									</div>
+								</footer>
+								<header class="header upper">
+										<span class="name">Όνομα Τραγουδιού</span>
+										<span class="artist">Καλλιτέχνης</span>
+										<span class="album">Άλμπουμ</span>
+										<span class="duration">Διάρκεια</span>
 								</header>
-
-
-								<div class="grid-view video">
-									<!--Item-->
-									<header publisher="none" album="none" videoname="Sample Video 1" class="header item">
+								<article>
+									<header class="header heading">
 										<span class="name">
-											<span class="title">Sample Video 1</span>
-											<span class="title">00:00:30</span>
+											<h2>Μουσική</h2> 
+											<button class="cpe-button is-tertiary is-unaccented">
+												<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												<span>Αναπαραγωγή Όλων</span>
+											</button>
 										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
 									</header>
-									<!--Item-->
-									<header publisher="none" album="none" videoname="Sample Video 2" class="header item">
+										<header publisher="none" album="none" songname="Sample Music 1" class="header item">
+											<span class="name">Sample Music 1</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">00:00:28</span>
+										</header>
+										<header publisher="none" album="none" songname="Sample Music 2" class="header item">
+											<span class="name">Sample Music 2</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">00:00:08</span>
+										</header>
+										<header publisher="none" album="none" songname="Sample Music 3" class="header item">
+											<span class="name">Sample Music 3</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">00:01:40</span>
+										</header>
+										<header publisher="none" album="none" songname="Sample Music 4" class="header item">
+											<span class="name">Sample Music 4</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">01:00:00</span>
+										</header>
+										<header publisher="none" album="none" songname="Sample Music 5" class="header item">
+											<span class="name">Sample Music 5</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">00:00:28</span>
+										</header>
+										<header publisher="none" album="none" songname="Sample Music 6" class="header item">
+											<span class="name">Sample Music 6</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">00:00:54</span>
+										</header>
+										<header publisher="A Techno" album="Musicals" songname="Other Musical" class="header item">
+											<span class="name">Other Musical</span>
+											<span class="artist">A Techno</span>
+											<span class="album">Musicals</span>
+											<span class="duration">00:09:33</span>
+										</header>
+									<header class="header heading">
 										<span class="name">
-											<span class="title">Sample Video 2</span>
-											<span class="title">00:01:13</span>
+											<h2>Βίντεο</h2>
+											<button class="cpe-button is-tertiary is-unaccented">
+												<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												<span>Αναπαραγωγή Όλων</span>
+											</button>
 										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
 									</header>
 
-								</div>
 
-								<header class="header heading">
-									<span class="name">
-										<h2>Φωτογραφίες</h2>
-										<button class="cpe-button is-tertiary is-unaccented">
-											<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-											<span>Αναπαραγωγή Όλων</span>
+									<div class="grid-view video">
+										<!--Item-->
+										<header publisher="none" album="none" videoname="Sample Video 1" class="header item">
+											<span class="name">
+												<span class="title">Sample Video 1</span>
+												<span class="title">00:00:30</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" videoname="Sample Video 2" class="header item">
+											<span class="name">
+												<span class="title">Sample Video 2</span>
+												<span class="title">00:01:13</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+
+									</div>
+
+									<header class="header heading">
+										<span class="name">
+											<h2>Φωτογραφίες</h2>
+											<button class="cpe-button is-tertiary is-unaccented">
+												<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+												<span>Αναπαραγωγή Όλων</span>
+											</button>
+										</span>
+									</header>
+
+
+									<div class="grid-view photos">
+										<!--Item-->
+										<header photoname="Test Pic" class="header item" style="--self-album-icon:url('Photos/Test Pic.png');">
+											<span class="name">
+												<span class="title">Test Pic</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header photoname="EvePride" class="header item" style="--self-album-icon:url('Photos/EvePride.png');">
+											<span class="name">
+												<span class="title">EvePride</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header photoname="Banner_Blue" class="header item" style="--self-album-icon:url('Photos/Banner_Blue.png');">
+											<span class="name">
+												<span class="title">Banner_Blue</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header photoname="Sample" class="header item">
+											<span class="name">
+												<span class="title">Sample</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+									</div>
+
+								</article>
+
+							</section>
+						</div>
+					</main>
+					<!--In Queue-->
+					<main class="queue" ondrop="DropAudioAdd(event,'Αναπαραγωγή','Παύση')">
+						<div class="proc_page">
+							<section>
+								<footer>
+									<div class="lunalevit"></div>
+									<h2>Στην Ουρά</h2>
+									<div class="cpe-button-group">
+										<button class="cpe-button is-tertiary is-alert-color">
+										<span translate="no" class="cpe-icon cpe-icon-small material-icons">delete</span>
+										<span>Εκκαθάριση</span>
 										</button>
-									</span>
-								</header>
+										<div class="cpe-dropdown">
+											<div class="cpe-button is-tertiary is-unaccented cpe-dropodwn__toggle">
+											<span translate="no" class="cpe-icon cpe-icon-small material-icons">folder_open</span>
+											<span>Προσθήκη</span>
+											<span translate="no" class="cpe-icon cpe-icon-large cpe-icon-tiny cpe-dropdown__toggle-chevron material-icons">arrow_drop_down</span>
+											</div>
+											<div class="cpe-dropdown__content is-right-aligned">
+												<ul class="cpe-list is-linked">
+													<li class="is-hidden">
+														<input name="audiofile" id="AudioFile2" accept="audio/*,image/*" multiple onchange="FileAudioAdd(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+														<input name="audiofile" id="FolderFile2" accept="audio/*,image/*" webkitdirectory onchange="FileAudioAdd(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
+													</li>
+													<li>
+														<a><label for="AudioFile2">
+															<span translate="no" class="cpe-icon cpe-icon-small material-icons">
+																folder_open
+															</span>
+															<span>Αρχεία</span>
+														</label></a>
+													</li>
+													<li>
+														<a><label for="FolderFile2">
+															<span translate="no" class="cpe-icon cpe-icon-small material-icons">topic</span>
+															<span>Φάκελος</span>
+														</label></a>
+													</li>
+													<li>
+														<a onclick="URLAudioAdd('Αναπαραγωγή','Παύση')">
+															<span translate="no" class="cpe-icon cpe-icon-small material-icons">language</span>
+															<span>Διεύθυνση URL</span>
+														</a>
+													</li>
+												</ul>
 
-
-								<div class="grid-view photos">
-									<!--Item-->
-									<header photoname="Test Pic" class="header item" style="--self-album-icon:url('Photos/Test Pic.png');">
-										<span class="name">
-											<span class="title">Test Pic</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header photoname="EvePride" class="header item" style="--self-album-icon:url('Photos/EvePride.png');">
-										<span class="name">
-											<span class="title">EvePride</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header photoname="Banner_Blue" class="header item" style="--self-album-icon:url('Photos/Banner_Blue.png');">
-										<span class="name">
-											<span class="title">Banner_Blue</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header photoname="Sample" class="header item">
-										<span class="name">
-											<span class="title">Sample</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-								</div>
-
-							</article>
-
-						</section>
-					</div>
-				</main>
-				<!--In Queue-->
-				<main class="queue" ondrop="DropAudioAdd(event,'Αναπαραγωγή','Παύση')">
-					<div class="proc_page">
-						<section>
-							<footer>
-								<div class="lunalevit"></div>
-								<h2>Στην Ουρά</h2>
-								<div class="cpe-button-group">
-									<button class="cpe-button is-tertiary is-alert-color">
-									<span translate="no" class="cpe-icon cpe-icon-small material-icons">delete</span>
-									<span>Εκκαθάριση</span>
-									</button>
-									<div class="cpe-dropdown">
-										<div class="cpe-button is-tertiary is-unaccented cpe-dropodwn__toggle">
-										<span translate="no" class="cpe-icon cpe-icon-small material-icons">folder_open</span>
-										<span>Προσθήκη</span>
-										<span translate="no" class="cpe-icon cpe-icon-large cpe-icon-tiny cpe-dropdown__toggle-chevron material-icons">arrow_drop_down</span>
-										</div>
-										<div class="cpe-dropdown__content is-right-aligned">
-											<ul class="cpe-list is-linked">
-												<li class="is-hidden">
-													<input name="audiofile" id="AudioFile2" accept="audio/*,image/*" multiple onchange="FileAudioAdd(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
-													<input name="audiofile" id="FolderFile2" accept="audio/*,image/*" webkitdirectory onchange="FileAudioAdd(this.files,'Αναπαραγωγή','Παύση')" type="file"></input>
-												</li>
-												<li>
-													<a><label for="AudioFile2">
-														<span translate="no" class="cpe-icon cpe-icon-small material-icons">
-															folder_open
-														</span>
-														<span>Αρχεία</span>
-													</label></a>
-												</li>
-												<li>
-													<a><label for="FolderFile2">
-														<span translate="no" class="cpe-icon cpe-icon-small material-icons">topic</span>
-														<span>Φάκελος</span>
-													</label></a>
-												</li>
-												<li>
-													<a onclick="URLAudioAdd('Αναπαραγωγή','Παύση')">
-														<span translate="no" class="cpe-icon cpe-icon-small material-icons">language</span>
-														<span>Διεύθυνση URL</span>
-													</a>
-												</li>
-											</ul>
-
+											</div>
 										</div>
 									</div>
-								</div>
-							</footer>
-							<header class="header upper">
-									<span class="name">Όνομα Τραγουδιού</span>
-									<span class="artist">Καλλιτέχνης</span>
-									<span class="album">Άλμπουμ</span>
-									<span class="duration">Διάρκεια</span>
-							</header>
-							<article>
-									<header trackid="00" publisher="none" album="none" songname="Sceptrum.ogg" class="header item" onclick="PlayTrack(0,'Αναπαραγωγή','Παύση')">
-										<span class="name">Sceptrum.ogg</span>
-										<span class="artist">-//-</span>
-										<span class="album">-//-</span>
-										<span class="duration">00:00:30</span>
-									</header>
-							</article>
-
-						</section>
-					</div>
-				</main>
-				<!--Playlists-->
-				<main class="playlists">
-					<div class="proc_page">
-						<section>
-							<footer>
-								<div class="lunalevit"></div>
-								<h2>Λίστες Αναπαραγωγής</h2>
-								<div class="cpe-button-group">
-									<button class="cpe-button is-tertiary is-unaccented">
-									<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">playlist_add</span>
-									<span>Δημιουργία</span>
-									</button>
-								</div>
-							</footer>
-<!--
-							<header class="header upper">
-							</header>
--->
-							<article>
-<!--
-								<header class="header heading">
-									<span class="name"><h2>Ενεργές Εφαρμογές</h2></span>
+								</footer>
+								<header class="header upper">
+										<span class="name">Όνομα Τραγουδιού</span>
+										<span class="artist">Καλλιτέχνης</span>
+										<span class="album">Άλμπουμ</span>
+										<span class="duration">Διάρκεια</span>
 								</header>
--->
-								<div class="grid-view">
-									<!--Item-->
-									<header playlistname="Musicals" class="header item">
-										<span class="name">
-											<span class="title">Musicals</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή Όλων">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-												<div class="separator"></div>
-												<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
-												</button>
-										</div>
-									</header>
+								<article>
+										<header trackid="00" publisher="none" album="none" songname="Sceptrum.ogg" class="header item" onclick="PlayTrack(0,'Αναπαραγωγή','Παύση')">
+											<span class="name">Sceptrum.ogg</span>
+											<span class="artist">-//-</span>
+											<span class="album">-//-</span>
+											<span class="duration">00:00:30</span>
+										</header>
+								</article>
 
-								</div>
-					
-							</article>
-
-						</section>
-					</div>
-				</main>
-				<!--QQC Sessions-->
-				<main class="sessions">
-					<div class="proc_page">
-						<section>
-							<footer>
-								<div class="lunalevit"></div>
-								<h2>Συνεδρίες QQC</h2>
-								<div class="cpe-button-group">
-									<button class="cpe-button is-tertiary is-unaccented">
-									<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">refresh</span>
-									<span>Ανανέωση</span>
-									</button>
-								</div>
-							</footer>
-<!--
-							<header class="header upper">
-							</header>
--->
-							<article>
-<!--
-								<header class="header heading">
-									<span class="name"><h2>Ενεργές Εφαρμογές</h2></span>
-								</header>
--->
-								<div class="grid-view">
-									<!--Item-->
-									<header publisher="none" album="none" videoname="QQC_Session_03-05-2023" class="header item" title="Qora Qore Development (03-05-2023)">
-										<span class="name">
-											<span class="title">Qora Qore Development (03-05-2023)</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" videoname="QQC_Session_20-04-2023" class="header item" title="Qora Qore Development (20-04-2023)">
-										<span class="name">
-											<span class="title">Qora Qore Development (20-04-2023)</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" videoname="QQC_Session_30-03-2023" class="header item" title="Qora Qore Development (30-03-2023)">
-										<span class="name">
-											<span class="title">Qora Qore Development (30-03-2023)</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-									<!--Item-->
-									<header publisher="none" album="none" videoname="QQC_Session_19-11-2022" class="header item" title="Qora Qore GenIX Development (19-11-2022)">
-										<span class="name">
-											<span class="title">Qora Qore GenIX Development (19-11-2022)</span>
-										</span>
-										<div class="controls cpe-floating-button-group">
-												<button class="cpe-floating-button play" title="Αναπαραγωγή">
-													<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
-												</button>
-										</div>
-									</header>
-
-								</div>
-					
-							</article>
-
-						</section>
-					</div>
-				</main>
-
-
-				<!--Settings-->
-				<main class="settings">
-					<div class="settings_page">
-						<section>
-							<div class="lunalevit"></div>
-							<header class="upper">
-								<h2>Ρυθμίσεις</h2>
-							</header>
-							<article>
-								<div class="cpe-settings-fieldset AppTheme">
-									<details class="cpe-settings-fieldset__content" open>
-									<summary><h2>
-									<span translate="no" class="cpe-icon material-icons">palette</span>
-									Θέμα Εφαρμογής
-									</h2></summary>
-									<input type="radio" name="AppTheme" id="AppTheme01" onclick="colortheme('match-parent','light','match-parent','match-parent','duo')"><label for="AppTheme01">Αυτόματο</label>
-									<br>
-									<input type="radio" name="AppTheme" id="AppTheme02" onclick="colortheme('match-parent','dark','match-parent','match-parent','duo')"><label for="AppTheme02">Αυτόματο (Σκουρόχρωμο)</label>
-									<br>
-									<input type="radio" name="AppTheme" id="AppTheme03" onclick="colortheme('match-parent','light','match-parent','match-parent','solo')"><label for="AppTheme03">Ανοιχτόχρωμο</label>
-									<br>
-									<input type="radio" name="AppTheme" id="AppTheme04" onclick="colortheme('match-parent','dark','match-parent','match-parent','solo')"><label for="AppTheme04">Σκουρόχρωμο</label>
-									<div>
-									<input type="radio" name="AppTheme" id="AppTheme05"><label for="AppTheme05">Προσαρμοσμένο</label>
+							</section>
+						</div>
+					</main>
+					<!--Playlists-->
+					<main class="playlists">
+						<div class="proc_page">
+							<section>
+								<footer>
+									<div class="lunalevit"></div>
+									<h2>Λίστες Αναπαραγωγής</h2>
+									<div class="cpe-button-group">
+										<button class="cpe-button is-tertiary is-unaccented">
+										<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">playlist_add</span>
+										<span>Δημιουργία</span>
+										</button>
 									</div>
-									</details>
-									<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει το θέμα συσκευής του Αναπαραγωγέα Πολυμέσων</small></div>
-								</div>
-								
-								<div class="cpe-settings-fieldset LandingPage">
-									<details class="cpe-settings-fieldset__content" open>
-									<summary><h2>
-									<span translate="no" class="cpe-icon material-icons">home</span>
-									Σελίδα Προσγείωσης
-									</h2></summary>
-									<input type="radio" name="LandingPage" id="LandingPage01" onclick="insertKey('mp-default-page', 'recent')"><label for="LandingPage01">Πρόσφατα</label>
-									<br>
-									<input type="radio" name="LandingPage" id="LandingPage02" onclick="insertKey('mp-default-page', 'libraries')"><label for="LandingPage02">Βιβλιοθήκες</label>
-									<br>
-									<input type="radio" name="LandingPage" id="LandingPage03" onclick="insertKey('mp-default-page', 'queue')"><label for="LandingPage03">Στην Ουρά</label>
-									<br>
-									<input type="radio" name="LandingPage" id="LandingPage04" onclick="insertKey('mp-default-page', 'playlists')"><label for="LandingPage04">Λίστες Αναπαραγωγής</label>
-									<br>
-									<input type="radio" name="LandingPage" id="LandingPage05" onclick="insertKey('mp-default-page', 'sessions')"><label for="LandingPage05">Συνεδρίες QQC</label>
-									</details>
-									<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει την σελίδα που θα εμφανίζεται κάθε φορά που ξεκινά ο Αναπαραγωγέας Πολυμέσων</small></div>
-								</div>
-
-								<div class="cpe-settings-fieldset LibraryLocations">
-									<details class="cpe-settings-fieldset__content" open>
-									<summary><h2>
-									<span translate="no" class="cpe-icon material-icons">video_library</span>
-									Θέσεις Βιβλιοθηκών
-									</h2></summary>
-										<div class="cpe-settings-fieldset Music">
-											<details class="cpe-settings-fieldset__content" open>
-											<summary><h2>
-											<span translate="no" class="cpe-icon material-icons">music_note</span>
-											Μουσική
-											</h2></summary>
-
-											<div class="items">
-												<div class="item">
-													<span contenteditable="">A:/Users/user/MyMusic</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
-												</div>
+								</footer>
+	<!--
+								<header class="header upper">
+								</header>
+	-->
+								<article>
+	<!--
+									<header class="header heading">
+										<span class="name"><h2>Ενεργές Εφαρμογές</h2></span>
+									</header>
+	-->
+									<div class="grid-view">
+										<!--Item-->
+										<header playlistname="Musicals" class="header item">
+											<span class="name">
+												<span class="title">Musicals</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή Όλων">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+													<div class="separator"></div>
+													<button class="cpe-floating-button is-alert-color delete" title="Κατάργηση">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">delete</span>
+													</button>
 											</div>
-											<button class="cpe-button">
-												<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
-												<span>Προσθήκη Φακέλου</span>
-											</button>
-											
-											</details>
-										</div>
+										</header>
 
+									</div>
+						
+								</article>
 
-										<div class="cpe-settings-fieldset Video">
-											<details class="cpe-settings-fieldset__content" open>
-											<summary><h2>
-											<span translate="no" class="cpe-icon material-icons">videocam</span>
-											Βίντεο
-											</h2></summary>
-
-											<div class="items">
-												<div class="item">
-													<span contenteditable="">A:/Users/user/MyVideo</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
-												</div>
+							</section>
+						</div>
+					</main>
+					<!--QQC Sessions-->
+					<main class="sessions">
+						<div class="proc_page">
+							<section>
+								<footer>
+									<div class="lunalevit"></div>
+									<h2>Συνεδρίες QQC</h2>
+									<div class="cpe-button-group">
+										<button class="cpe-button is-tertiary is-unaccented">
+										<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">refresh</span>
+										<span>Ανανέωση</span>
+										</button>
+									</div>
+								</footer>
+	<!--
+								<header class="header upper">
+								</header>
+	-->
+								<article>
+	<!--
+									<header class="header heading">
+										<span class="name"><h2>Ενεργές Εφαρμογές</h2></span>
+									</header>
+	-->
+									<div class="grid-view">
+										<!--Item-->
+										<header publisher="none" album="none" videoname="QQC_Session_03-05-2023" class="header item" title="Qora Qore Development (03-05-2023)">
+											<span class="name">
+												<span class="title">Qora Qore Development (03-05-2023)</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
 											</div>
-											<button class="cpe-button">
-												<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
-												<span>Προσθήκη Φακέλου</span>
-											</button>
-
-											
-											</details>
-										</div>
-
-										<div class="cpe-settings-fieldset Video">
-											<details class="cpe-settings-fieldset__content" open>
-											<summary><h2>
-											<span translate="no" class="cpe-icon material-icons">image</span>
-											Φωτογραφίες
-											</h2></summary>
-
-											<div class="items">
-												<div class="item">
-													<span contenteditable="">A:/Users/user/MyPhotos</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
-												</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" videoname="QQC_Session_20-04-2023" class="header item" title="Qora Qore Development (20-04-2023)">
+											<span class="name">
+												<span class="title">Qora Qore Development (20-04-2023)</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
 											</div>
-											<button class="cpe-button">
-												<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
-												<span>Προσθήκη Φακέλου</span>
-											</button>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" videoname="QQC_Session_30-03-2023" class="header item" title="Qora Qore Development (30-03-2023)">
+											<span class="name">
+												<span class="title">Qora Qore Development (30-03-2023)</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
+										<!--Item-->
+										<header publisher="none" album="none" videoname="QQC_Session_19-11-2022" class="header item" title="Qora Qore GenIX Development (19-11-2022)">
+											<span class="name">
+												<span class="title">Qora Qore GenIX Development (19-11-2022)</span>
+											</span>
+											<div class="controls cpe-floating-button-group">
+													<button class="cpe-floating-button play" title="Αναπαραγωγή">
+														<span translate="no" class="cpe-icon cpe-icon-medium cpe-icon-small material-icons">play_arrow</span>
+													</button>
+											</div>
+										</header>
 
-											
-											</details>
+									</div>
+						
+								</article>
+
+							</section>
+						</div>
+					</main>
+
+
+					<!--Settings-->
+					<main class="settings">
+						<div class="settings_page">
+							<section>
+								<div class="lunalevit"></div>
+								<header class="upper">
+									<h2>Ρυθμίσεις</h2>
+								</header>
+								<article>
+									<div class="cpe-settings-fieldset AppTheme">
+										<details class="cpe-settings-fieldset__content" open>
+										<summary><h2>
+										<span translate="no" class="cpe-icon material-icons">palette</span>
+										Θέμα Εφαρμογής
+										</h2></summary>
+										<input type="radio" name="AppTheme" id="AppTheme01" onclick="colortheme('match-parent','light','match-parent','match-parent','duo')"><label for="AppTheme01">Αυτόματο</label>
+										<br>
+										<input type="radio" name="AppTheme" id="AppTheme02" onclick="colortheme('match-parent','dark','match-parent','match-parent','duo')"><label for="AppTheme02">Αυτόματο (Σκουρόχρωμο)</label>
+										<br>
+										<input type="radio" name="AppTheme" id="AppTheme03" onclick="colortheme('match-parent','light','match-parent','match-parent','solo')"><label for="AppTheme03">Ανοιχτόχρωμο</label>
+										<br>
+										<input type="radio" name="AppTheme" id="AppTheme04" onclick="colortheme('match-parent','dark','match-parent','match-parent','solo')"><label for="AppTheme04">Σκουρόχρωμο</label>
+										<div>
+										<input type="radio" name="AppTheme" id="AppTheme05"><label for="AppTheme05">Προσαρμοσμένο</label>
 										</div>
+										</details>
+										<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει το θέμα συσκευής του Αναπαραγωγέα Πολυμέσων</small></div>
+									</div>
+									
+									<div class="cpe-settings-fieldset LandingPage">
+										<details class="cpe-settings-fieldset__content" open>
+										<summary><h2>
+										<span translate="no" class="cpe-icon material-icons">home</span>
+										Σελίδα Προσγείωσης
+										</h2></summary>
+										<input type="radio" name="LandingPage" id="LandingPage01" onclick="insertKey('mp-default-page', 'recent')"><label for="LandingPage01">Πρόσφατα</label>
+										<br>
+										<input type="radio" name="LandingPage" id="LandingPage02" onclick="insertKey('mp-default-page', 'libraries')"><label for="LandingPage02">Βιβλιοθήκες</label>
+										<br>
+										<input type="radio" name="LandingPage" id="LandingPage03" onclick="insertKey('mp-default-page', 'queue')"><label for="LandingPage03">Στην Ουρά</label>
+										<br>
+										<input type="radio" name="LandingPage" id="LandingPage04" onclick="insertKey('mp-default-page', 'playlists')"><label for="LandingPage04">Λίστες Αναπαραγωγής</label>
+										<br>
+										<input type="radio" name="LandingPage" id="LandingPage05" onclick="insertKey('mp-default-page', 'sessions')"><label for="LandingPage05">Συνεδρίες QQC</label>
+										</details>
+										<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει την σελίδα που θα εμφανίζεται κάθε φορά που ξεκινά ο Αναπαραγωγέας Πολυμέσων</small></div>
+									</div>
 
-											<button class="cpe-button is-alert-color" title="Επαναφέρνει τους φακέλους μουσικής, βίντεο και φωτογραφιών στις εργοστασιακές επιλογές">
-												<span translate="no" class="cpe-icon cpe-icon-small material-icons">undo</span>
-												<span>Επαναφορά Φακέλων</span>
-											</button>
-									</details>
-									<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει τις θέσεις βιβλιοθηκών που θα χρησιμοποιεί ο Αναπαραγωγέας Πολυμέσων για την μουσική, τα βίντεο και τις φωτογραφίες</small></div>
-								</div>
+									<div class="cpe-settings-fieldset LibraryLocations">
+										<details class="cpe-settings-fieldset__content" open>
+										<summary><h2>
+										<span translate="no" class="cpe-icon material-icons">video_library</span>
+										Θέσεις Βιβλιοθηκών
+										</h2></summary>
+											<div class="cpe-settings-fieldset Music">
+												<details class="cpe-settings-fieldset__content" open>
+												<summary><h2>
+												<span translate="no" class="cpe-icon material-icons">music_note</span>
+												Μουσική
+												</h2></summary>
+
+												<div class="items">
+													<div class="item">
+														<span contenteditable="">A:/Users/user/MyMusic</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													</div>
+												</div>
+												<button class="cpe-button">
+													<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
+													<span>Προσθήκη Φακέλου</span>
+												</button>
+												
+												</details>
+											</div>
+
+
+											<div class="cpe-settings-fieldset Video">
+												<details class="cpe-settings-fieldset__content" open>
+												<summary><h2>
+												<span translate="no" class="cpe-icon material-icons">videocam</span>
+												Βίντεο
+												</h2></summary>
+
+												<div class="items">
+													<div class="item">
+														<span contenteditable="">A:/Users/user/MyVideo</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													</div>
+												</div>
+												<button class="cpe-button">
+													<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
+													<span>Προσθήκη Φακέλου</span>
+												</button>
+
+												
+												</details>
+											</div>
+
+											<div class="cpe-settings-fieldset Video">
+												<details class="cpe-settings-fieldset__content" open>
+												<summary><h2>
+												<span translate="no" class="cpe-icon material-icons">image</span>
+												Φωτογραφίες
+												</h2></summary>
+
+												<div class="items">
+													<div class="item">
+														<span contenteditable="">A:/Users/user/MyPhotos</span> <a class="cpe-button is-text is-unaccented" title="Κατάργηση"> <span translate="no" class="cpe-icon material-icons">close</span> </a>
+													</div>
+												</div>
+												<button class="cpe-button">
+													<span translate="no" class="cpe-icon cpe-icon-small material-icons">create_new_folder</span>
+													<span>Προσθήκη Φακέλου</span>
+												</button>
+
+												
+												</details>
+											</div>
+
+												<button class="cpe-button is-alert-color" title="Επαναφέρνει τους φακέλους μουσικής, βίντεο και φωτογραφιών στις εργοστασιακές επιλογές">
+													<span translate="no" class="cpe-icon cpe-icon-small material-icons">undo</span>
+													<span>Επαναφορά Φακέλων</span>
+												</button>
+										</details>
+										<div style="margin:5px 0;"><small>Αυτή η ρύθμιση ορίζει τις θέσεις βιβλιοθηκών που θα χρησιμοποιεί ο Αναπαραγωγέας Πολυμέσων για την μουσική, τα βίντεο και τις φωτογραφίες</small></div>
+									</div>
 
 
 
-							</article>
+								</article>
 
-						</section>
-					</div>
-				</main>
+							</section>
+						</div>
+					</main>
 
 
+				</div>
 			</div>
 			<div class="media-controls">
 				<div class="content">
@@ -797,7 +803,7 @@
 						<span class="timer_end">00:00:00.000</span>
 					</div>
 					<div class="bottom">
-						<div class="playing">
+						<div class="playing" onclick="ToggleMiniplayer()">
 							<span class="name">
 								<span>Sceptrum.ogg</span>
 							</span>

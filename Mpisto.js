@@ -92,7 +92,7 @@ function allowDrop(ev) {
 
 
 function isImage(img) {
-	return img.match(/[^/]+(jpg|png|gif|avif|webp|ico)$/)
+	return img.match(/[^/]+(jpg|png|gif|avif|webp|ico|svg)$/)
 }
 
 function currentTrackName() {
@@ -104,6 +104,15 @@ function currentTrackURLName() {
 }
 
 /** Bottom Bar **/
+
+/* Miniplayer */
+function ToggleMiniplayer() {
+	if (document.querySelector('body').hasAttribute("miniplayer")) {
+		document.querySelector('body').removeAttribute("miniplayer")
+	} else {
+		document.querySelector('body').setAttribute("miniplayer",'');
+	}
+}
 
 /* Timer */
 function InitTimerValue() {
