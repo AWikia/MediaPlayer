@@ -85,7 +85,7 @@
 .visualstyle-basic .media-controls .bottom .playing:hover {
 	color:var(--luna-foreground-color-hover);
 	border-color:var(--luna-foreground-color-hover);
-	background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.2);
+	background-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.2);
 }
 
 .visualstyle-basic [page*="recent"] .tabs .recent,
@@ -99,7 +99,7 @@
 .visualstyle-basic .media-controls .bottom .playing:active {
 	color:var(--luna-foreground-color-hover);
 	border-color:var(--luna-foreground-color-hover);
-	background-color:rgb(var(--luna-hyperlink-background-color-rgb) / 0.4);
+	background-color:rgb(from var(--luna-hyperlink-background-color) r g b / 0.4);
 }
 
 .visualstyle-basic .proc_page .upper span:hover, 
@@ -158,10 +158,10 @@
 .visualstyle-simple .tabs .cpe-dropdown:focus-within > a,
 .visualstyle-simple .media-controls .bottom .playing:hover,
 .visualstyle-simple .media-controls .bottom .playing:active {
-	background-color:rgb(var(--canvas-secondary-background-color-hover-rgb) / var(--mica-opacity-2));
+	background-color:rgb(from var(--canvas-secondary-background-color-hover) r g b / var(--mica-opacity-2));
 	color:var(--canvas-secondary-foreground-color-inverted);
 	animation:none;
-	border-color:rgb(var(--canvas-foreground-color-rgb) / 0.2);
+	border-color:rgb(from var(--canvas-foreground-color) r g b / 0.2);
 }
 
 
@@ -188,5 +188,5 @@
 	color:var(--canvas-secondary-background-color);
 	box-shadow:none;
 	animation:none;
-	border-color:rgb(var(--canvas-secondary-background-color-rgb) / 0.5);
+	border-color:rgb(from var(--canvas-secondary-background-color) r g b / 0.5);
 }
