@@ -23,16 +23,7 @@
 		insertKey('mp-default-page', 'recent' );
 	}
 		/* Active Theme */
-		if (getKey('device-theme') === 'light' ) {
-			active_tm_theme =  (getKey('color-style-behavior') === 'duo' ) ? 'auto' : 'light'
-		} else if ( (getKey('device-theme') === 'dark' ) ) {
-			active_tm_theme =  (getKey('color-style-behavior') === 'duo' ) ? 'auto-dark' : 'dark'
-		} else if ( (getKey('device-theme') === 'auto' ) || (getKey('device-theme') === 'auto-dark' ) ) {
-			active_tm_theme = 'custom';
-		} else {
-			active_tm_theme = 'auto';
-		}
-		document.getElementById("AppTheme" + ['01','02','03','04','05'][ ['auto','auto-dark','light','dark','custom'].indexOf(active_tm_theme) ]).checked=true;
+		document.getElementById("AppTheme" + ['01','02','03','04'][ ['auto','auto-dark','light','dark'].indexOf(getKey('color-scheme')) ]).checked=true;
 		/* Default Page */
 		default_page = getKey('mp-default-page');
 		$('body').attr("page",  default_page);
@@ -93,6 +84,10 @@ function allowDrop(ev) {
 
 function isImage(img) {
 	return img.match(/[^/]+(jpg|png|gif|avif|webp|ico|svg)$/)
+}
+
+function isVideo(img) {
+	return img.match(/[^/]+(mp4|webm|avi)$/)
 }
 
 function currentTrackName() {
@@ -221,8 +216,13 @@ async function playAudio(elem,playtext="Play") {
 	UpdateTrackDuration();
 	if (isImage(currentTrackName())) {
 		document.querySelector('body').style.setProperty("--album-icon", 'url(' + currentTrackURLName() + ')'  );
+		document.querySelector(".media-controls .bottom .playing").removeAttribute("videoname");
+	} else if (isVideo(currentTrackName())) {
+		document.querySelector('body').style.removeProperty("--album-icon");
+		document.querySelector(".media-controls .bottom .playing").setAttribute("videoname",'');
 	} else {
 		document.querySelector('body').style.removeProperty("--album-icon");
+		document.querySelector(".media-controls .bottom .playing").removeAttribute("videoname");
 	}
   } catch (err) {
 	AddFloatingBanner('Failed to play audio content: <br>'+err,'alert');
@@ -534,6 +534,8 @@ function insertTrack(trackname="Sample",time="",playtext="Play",pausetext="Pause
 	document.querySelector("main.queue .proc_page section article").insertAdjacentHTML('beforeend',str);
 	if (isImage(trackname)) {
 		document.querySelector("main.queue .proc_page article header[trackid='" + String( len ).padStart(2, '0') + "']").style.setProperty("--self-album-icon", 'url(' + window.MP_audioFiles[len] + ')'  );
+	} else if (isVideo(trackname)) {
+		document.querySelector("main.queue .proc_page article header[trackid='" + String( len ).padStart(2, '0') + "']").setAttribute("videoname",trackname);
 	}
 }
 
